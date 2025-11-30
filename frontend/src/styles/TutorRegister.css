@@ -1,0 +1,185 @@
+.tutor-register-page {
+    margin-top: 100px;
+    min-height: calc(100vh - 100px);
+    background: linear-gradient(135deg, #f0f7ff 0%, #ffffff 100%);
+    padding: 40px 20px 60px;
+  }
+  
+  .tutor-register-container {
+    max-width: 900px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+                0 2px 4px -2px rgba(0, 0, 0, 0.05);
+    padding: 40px;
+  }
+  
+  .header-section {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  
+  .header-section h1 {
+    font-size: 32px;
+    color: #1e40af;
+    font-weight: 700;
+    margin-bottom: 12px;
+  }
+  
+  .header-section .subtitle {
+    font-size: 16px;
+    color: #64748b;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  .requirements-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    margin-bottom: 40px;
+  }
+  
+  .requirement-card {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 24px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  
+  .requirement-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  }
+  
+  .requirement-card h2 {
+    color: #1e40af;
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid #e2e8f0;
+  }
+  
+  .requirement-card ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .requirement-card li {
+    color: #334155;
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 12px;
+    padding-left: 24px;
+    position: relative;
+  }
+  
+  .requirement-card li::before {
+    content: "•";
+    color: #3b82f6;
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+  }
+  
+  .terms-section {
+    margin: 32px 0;
+    padding: 24px;
+    background: #f8fafc;
+    border-radius: 12px;
+    border: 1px solid #e2e8f0;
+  }
+  
+  .terms-checkbox {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    cursor: pointer;
+  }
+  
+  .terms-checkbox input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    margin-top: 2px;
+  }
+  
+  .terms-checkbox span {
+    color: #334155;
+    font-size: 15px;
+    line-height: 1.6;
+  }
+  
+  .action-section {
+    display: flex;
+    justify-content: center;
+    margin-top: 32px;
+  }
+  
+  .apply-button {
+    background: #e2e8f0;
+    color: #94a3b8;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 16px 48px;
+    border: none;
+    border-radius: 12px;
+    cursor: not-allowed;
+    transition: all 0.3s ease;
+    min-width: 240px;
+  }
+  
+  .apply-button.active {
+    background: #2563eb;
+    color: white;
+    cursor: pointer;
+  }
+  
+  .apply-button.active:hover {
+    background: #1d4ed8;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
+  }
+  
+  .apply-button.active:active {
+    transform: translateY(0);
+  }
+  
+  @media (max-width: 768px) {
+    .tutor-register-container {
+      padding: 24px;
+    }
+  
+    .header-section h1 {
+      font-size: 28px;
+    }
+  
+    .requirements-section {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .tutor-register-page {
+      padding: 20px;
+    }
+  
+    .tutor-register-container {
+      padding: 20px;
+    }
+  
+    .header-section h1 {
+      font-size: 24px;
+    }
+  
+    .requirement-card {
+      padding: 20px;
+    }
+  
+    .apply-button {
+      width: 100%;
+    }
+  }

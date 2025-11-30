@@ -1,0 +1,49 @@
+:root {
+  --primary: #0FA9DC;
+  --font-main: 'Roboto', system-ui, Avenir, Helvetica, Arial, sans-serif;
+}
+
+/* Reset cơ bản */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body không còn bị "center" nữa */
+body {
+  font-family: var(--font-main);
+  background-color: #ffffff;
+  color: #213547;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+/* Force the main app background to white so transient semi-transparent
+   elements (eg. navbar) don't make the page look blue */
+html, body, #root, main {
+  background-color: #ffffff !important;
+}
+
+/* Link mặc định */
+a {
+  font-weight: 500;
+  color: #0FA9DC;
+  text-decoration: none;
+}
+a:hover {
+  opacity: 0.8;
+}
+
+/* Các phần tử gốc của app */
+#root {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Đặt vùng hiển thị chính sau Navbar */
+main {
+  flex: 1;
+  width: 100%;
+}

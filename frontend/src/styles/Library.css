@@ -1,0 +1,648 @@
+.to-do {
+  background-color: #ffffff;
+  /* ensure the white background always fills the viewport */
+  min-height: 100vh;
+  width: 100%;
+  position: relative;
+  left: 0;
+  top: 0;
+  /* remove hard-coded min-width to avoid horizontal overflow */
+  min-width: 0;
+}
+
+.to-do .vector {
+  height: 400px;
+  left: 0;
+  position: absolute;
+  top: 452px;
+  width: 513px;
+}
+
+.to-do .img {
+  height: 348px;
+  left: 966px;
+  position: absolute;
+  top: 0;
+  width: 549px;
+}
+
+.to-do .frame {
+  display: flex;
+  flex-direction: column;
+  gap: 35.1px;
+  /* Use normal document flow so content isn't pushed down by absolute coords */
+  position: relative;
+  margin: 120px 80px 40px; /* space from navbar and page sides */
+  width: calc(100% - 160px);
+  box-sizing: border-box;
+}
+
+.to-do .group {
+  height: 114px;
+  margin-left: 79.5px;
+  margin-top: 67.4px;
+  position: relative;
+  width: 1128px;
+}
+
+.to-do .div {
+  height: 52px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 127px;
+}
+
+.to-do .rectangle {
+  background-color: #18a0fb;
+  border-radius: 40px;
+  height: 52px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 125px;
+}
+
+.to-do .text-wrapper {
+  color: #ffffff;
+  font-family: "Roboto-Bold", Helvetica;
+  font-size: 24px;
+  font-weight: 700;
+  left: 30px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 12px;
+  white-space: nowrap;
+}
+
+.to-do .group-2 {
+  height: 52px;
+  left: 136px;
+  position: absolute;
+  top: 0;
+  width: 127px;
+}
+
+.to-do .rectangle-2 {
+  border: 1px solid;
+  border-color: #6e6e6e;
+  border-radius: 40px;
+  height: 52px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 125px;
+}
+
+.to-do .text-wrapper-2 {
+  color: #6e6e6e;
+  font-family: "Roboto-Bold", Helvetica;
+  font-size: 24px;
+  font-weight: 700;
+  left: 29px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 12px;
+  white-space: nowrap;
+}
+
+.to-do .group-3 {
+  height: 52px;
+  left: 1003px;
+  position: absolute;
+  top: 0;
+  width: 127px;
+}
+
+.to-do .text-wrapper-3 {
+  color: #6e6e6e;
+  font-family: "Roboto-Bold", Helvetica;
+  font-size: 24px;
+  font-weight: 700;
+  left: 41px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 12px;
+  white-space: nowrap;
+}
+
+.to-do .group-4 {
+  height: 52px;
+  left: 820px;
+  position: absolute;
+  top: 0;
+  width: 174px;
+}
+
+.to-do .rectangle-3 {
+  border: 1px solid;
+  border-color: #6e6e6e;
+  border-radius: 40px;
+  height: 52px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 172px;
+}
+
+.to-do .text-wrapper-4 {
+  color: #6e6e6e;
+  font-family: "Roboto-Bold", Helvetica;
+  font-size: 24px;
+  font-weight: 700;
+  left: 40px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 12px;
+  white-space: nowrap;
+}
+
+.to-do .group-5 {
+  height: 52px;
+  left: 187px;
+  position: absolute;
+  top: 62px;
+  width: 172px;
+}
+
+.to-do .rectangle-4 {
+  border: 1px solid;
+  border-color: #6e6e6e;
+  border-radius: 40px;
+  height: 52px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 170px;
+}
+
+.to-do .text-wrapper-5 {
+  color: #6e6e6e;
+  font-family: "Roboto-Bold", Helvetica;
+  font-size: 24px;
+  font-weight: 700;
+  left: 34px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 12px;
+  white-space: nowrap;
+}
+
+.to-do .group-6 {
+  height: 52px;
+  left: 368px;
+  position: absolute;
+  top: 62px;
+  width: 192px;
+}
+
+.to-do .rectangle-5 {
+  border: 1px solid;
+  border-color: #6e6e6e;
+  border-radius: 40px;
+  height: 52px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 190px;
+}
+
+.to-do .text-wrapper-6 {
+  color: #6e6e6e;
+  font-family: "Roboto-Bold", Helvetica;
+  font-size: 24px;
+  font-weight: 700;
+  left: 36px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 12px;
+  white-space: nowrap;
+}
+
+.to-do .group-wrapper {
+  display: flex;
+  height: 52px;
+  left: 569px;
+  position: absolute;
+  top: 62px;
+  width: 166px;
+}
+
+.to-do .group-7 {
+  height: 52px;
+  position: relative;
+  width: 168px;
+}
+
+.to-do .rectangle-6 {
+  border: 1px solid;
+  border-color: #6e6e6e;
+  border-radius: 40px;
+  height: 52px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 166px;
+}
+
+.to-do .text-wrapper-7 {
+  color: #6e6e6e;
+  font-family: "Roboto-Bold", Helvetica;
+  font-size: 24px;
+  font-weight: 700;
+  left: 35px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 12px;
+  white-space: nowrap;
+}
+
+.to-do .group-8 {
+  height: 52px;
+  left: 746px;
+  position: absolute;
+  top: 62px;
+  width: 127px;
+}
+
+.to-do .text-wrapper-8 {
+  color: #6e6e6e;
+  font-family: "Roboto-Bold", Helvetica;
+  font-size: 24px;
+  font-weight: 700;
+  left: 28px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 12px;
+  white-space: nowrap;
+}
+
+.to-do .group-9 {
+  height: 52px;
+  left: 646px;
+  position: absolute;
+  top: 0;
+  width: 165px;
+}
+
+.to-do .rectangle-7 {
+  border: 1px solid;
+  border-color: #6e6e6e;
+  border-radius: 40px;
+  height: 52px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 163px;
+}
+
+.to-do .group-10 {
+  height: 52px;
+  left: 408px;
+  position: absolute;
+  top: 0;
+  width: 229px;
+}
+
+.to-do .rectangle-8 {
+  border: 1px solid;
+  border-color: #6e6e6e;
+  border-radius: 40px;
+  height: 52px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 227px;
+}
+
+.to-do .group-11 {
+  height: 52px;
+  left: 272px;
+  position: absolute;
+  top: 0;
+  width: 127px;
+}
+
+.to-do .text-wrapper-9 {
+  color: #6e6e6e;
+  font-family: "Roboto-Bold", Helvetica;
+  font-size: 24px;
+  font-weight: 700;
+  left: 30px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 12px;
+  white-space: nowrap;
+}
+
+.to-do .th-vi-n-online-HCMUT {
+  color: #000000;
+  font-family: "Roboto-Bold", Helvetica;
+  font-size: 50px;
+  font-weight: 400;
+  height: 100px;
+  letter-spacing: 0;
+  line-height: normal;
+  margin-left: 116.8px;
+  text-align: center;
+  width: 1063.98px;
+}
+
+.to-do .span {
+  font-weight: 700;
+}
+
+.to-do .text-wrapper-10 {
+  font-family: "Roboto-Light", Helvetica;
+  font-size: 30px;
+  font-weight: 300;
+}
+
+.to-do .group-12 {
+  height: 68px;
+  margin-left: 399.1px;
+  position: relative;
+  width: 490.86px;
+}
+
+.to-do .group-13 {
+  height: 68px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 491px;
+}
+
+.to-do .rectangle-9 {
+  border: 1px solid;
+  border-color: #6e6e6e;
+  border-radius: 40px;
+  height: 68px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 489px;
+}
+
+.to-do .p {
+  color: #6e6e6e;
+  font-family: "Roboto-Regular", Helvetica;
+  font-size: 21px;
+  font-weight: 400;
+  left: 33px;
+  letter-spacing: 0.42px;
+  line-height: normal;
+  position: absolute;
+  top: 22px;
+  width: 364px;
+}
+
+.to-do .group-14 {
+  background-color: #18a0fb;
+  border-radius: 23.5px;
+  height: 47px;
+  left: 418px;
+  position: absolute;
+  top: 10px;
+  width: 47px;
+}
+
+.to-do .text-wrapper-11 {
+  color: #ffffff;
+  font-family: "Font Awesome 5 Free-Solid", Helvetica;
+  font-size: 21px;
+  font-weight: 400;
+  left: 431px;
+  letter-spacing: 0.42px;
+  line-height: normal;
+  position: absolute;
+  top: 22px;
+  white-space: nowrap;
+}
+
+/* ---- Improved, responsive subject layout and popup overrides ---- */
+.to-do .group-row {
+  width: 100%;
+  height: 160px;
+  position: relative;
+  margin-top: 20px;
+}
+
+.to-do .subject {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 52px;
+  padding: 0 28px;
+  border-radius: 40px;
+  background: white;
+  border: 1px solid #e2e8f0;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  user-select: none;
+  z-index: 1;
+}
+
+/* Override legacy absolute group-* classes when applied to subjects so they don't
+   interfere with the new flexible layout */
+.to-do .subject[class*="group-"] {
+  position: relative !important;
+  left: auto !important;
+  top: auto !important;
+  width: auto !important;
+}
+
+.to-do .subject:focus { outline: none; box-shadow: 0 6px 18px rgba(12,162,7,0.12); }
+.to-do .subject:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(17,24,39,0.06); }
+
+/* primary style for the first subject (All) */
+.to-do .group-row .subject:first-child { background-color: #18a0fb; border-color: transparent; }
+.to-do .group-row .subject:first-child .label { color: #fff; }
+
+.to-do .subject.open { background: linear-gradient(90deg,#0ca207,#18a0fb); color:#fff; border-color: transparent; }
+.to-do .subject.open .label { color: #fff; }
+
+/* label text centered and inheriting original typography */
+.to-do .label {
+  position: relative;
+  color: #6e6e6e;
+  font-family: "Roboto-Bold", Helvetica;
+  font-size: 20px;
+  font-weight: 700;
+  pointer-events: none; /* allow clicks to go to the container */
+}
+
+.to-do .subject .group-rect + .label { color: #fff; }
+
+/* Popup (shows under the clicked subject) */
+.subject-popup {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  min-width: 240px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e2e8f0;
+  padding: 16px;
+  z-index: 100;
+}
+
+.subject.open {
+  background: #18a0fb;
+  border-color: transparent;
+  color: white;
+  box-shadow: 0 4px 12px rgba(24, 160, 251, 0.2);
+  z-index: 10;
+}
+.subject-popup .popup-header { font-weight: 700; margin-bottom: 8px; }
+.subject-popup .popup-list { color: #6e6e6e; font-size: 14px; }
+
+.subject {
+  background: #ffffff;
+  border: 1.5px solid #e2e8f0;
+  color: #334155;
+  border-radius: 100px;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 8px 20px;
+  margin: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.subject:hover {
+  background: #f8fafc;
+  border-color: #94a3b8;
+  transform: translateY(-1px);
+}
+
+.search-row {
+  /* Search row improvements - centered and wide */
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0 auto; /* no bottom margin so subjects sit right below */
+  justify-content: center;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0 24px; /* small horizontal padding on very wide screens */
+}
+
+.search-input-wrap {
+  /* Make the search bar ~75% of the viewport width (70-80% target) */
+  flex: 0 0 75vw;
+  max-width: 1200px;
+  width: 75vw;
+}
+
+.search-input-wrap .p {
+  position: relative; /* cancel legacy absolute positioning */
+  left: auto;
+  top: auto;
+  width: 100%;
+  height: 48px;
+  padding: 10px 14px;
+  border-radius: 12px;
+  border: 1px solid rgba(110,110,110,0.18);
+  font-size: 16px;
+  color: #333;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.5);
+}
+
+.search-btn {
+  background: #18a0fb;
+  color: #fff;
+  border: none;
+  padding: 12px 18px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+/* ensure previous absolute helper classes don't interfere with new layout */
+.to-do .rectangle,
+.to-do .rectangle-2,
+.to-do .rectangle-3,
+.to-do .rectangle-4,
+.to-do .rectangle-5,
+.to-do .rectangle-6,
+.to-do .rectangle-7,
+.to-do .rectangle-8,
+.to-do .rectangle-9 {
+  position: absolute !important;
+  opacity: 0 !important; /* hide the legacy rectangle blocks (visuals replaced by new styles) */
+}
+
+.all-section {
+  display: flex;
+  justify-content: center;
+  padding: 24px 32px;
+  margin: 0 auto;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.all-section .subject.group {
+  width: 80%;
+  justify-content: center;
+  background: #18a0fb;
+  color: white;
+  border-color: transparent;
+  font-size: 16px;
+  padding: 12px 32px;
+  margin: 0;
+}
+
+.group-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
+  padding: 16px 32px;
+  margin: 0 auto;
+  max-width: 1200px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.group-row .subject {
+  flex: 0 0 auto;
+}
+
+.group-row .subject.group:hover {
+  background: #1493ea;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(24, 160, 251, 0.2);
+}
+
+@media (max-width: 900px) {
+  .all-section {
+    padding: 16px;
+  }
+  .all-section .subject.group {
+    width: 90%;
+  }
+  .group-row {
+    padding: 12px 16px;
+    gap: 6px;
+  }
+  .to-do .label { font-size: 16px; }
+  .subject-popup { left: 50%; transform: translateX(-50%); top: 58px; }
+  .search-row { margin-left: 20px; padding-right: 20px; }
+  .search-input-wrap { width: calc(100% - 40px); flex: 1 1 auto; max-width: none; }
+}

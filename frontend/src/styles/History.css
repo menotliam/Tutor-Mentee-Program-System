@@ -1,0 +1,460 @@
+:root{
+  --bg-start: rgba(26, 137, 255, 0.95);
+  --bg-end: rgba(12, 95, 210, 0.95);
+  --card-bg: rgba(255,255,255,0.96);
+  --glass-bg: rgba(255,255,255,0.08);
+  --accent: #007bff;
+  --muted: #7a8596;
+  --radius: 14px;
+  --shadow: 0 10px 30px rgba(12,40,80,0.12);
+}
+
+/* Page background: image + subtle gradient overlay */
+.history-page {
+  margin-top: 90px;
+  padding: 40px;
+  min-height: 100vh;
+  font-family: "Poppins", sans-serif;
+
+  /* background image (public/) with soft gradient overlay */
+  background:
+    linear-gradient(180deg, rgba(8,86,179,0.35) 0%, rgba(6,130,255,0.18) 40%, rgba(255,255,255,0.02) 100%),
+    url("/lulut.png");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  color: #0b2140;
+  box-sizing: border-box;
+}
+
+/* Title */
+.history-title {
+  text-align: center;
+  margin-bottom: 28px;
+  font-size: 28px;
+  font-weight: 700;
+  color: #fff;
+  text-shadow: 0 3px 18px rgba(0,0,0,0.35);
+  letter-spacing: 0.2px;
+}
+
+/* Container for history list and reschedule sidebar */
+.history-container {
+  display: flex;
+  gap: 24px;
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+  transition: all 0.3s ease;
+}
+
+.history-container.reschedule-mode {
+  justify-content: space-between;
+}
+
+/* List layout */
+.history-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 1100px;
+  margin: 0 auto;
+  width: 100%;
+  padding-bottom: 40px;
+  transition: all 0.3s ease;
+}
+
+.history-list-left {
+  max-width: 50%;
+  margin: 0;
+  flex: 1;
+}
+
+/* Card: glass / elevated */
+.history-card {
+  background: var(--card-bg);
+  padding: 20px 24px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: transform .18s ease, box-shadow .18s ease;
+  border-left: 6px solid transparent;
+  overflow: hidden;
+}
+
+.history-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(8,28,70,0.16);
+}
+
+/* Accent left border based on status via modifier classes (keeps JSX same) */
+.history-card[data-status="Đã xác nhận"] { border-left-color: #00b14f; }
+.history-card[data-status="Đang chờ xác nhận"] { border-left-color: #ffb74d; }
+
+/* Info text */
+.history-info h4 {
+  margin: 0 0 6px 0;
+  font-size: 18px;
+  color: #0b2340;
+  font-weight: 700;
+}
+
+.history-info p {
+  margin: 8px 0;
+  color: #213447;
+  font-size: 16px;
+}
+
+/* Status */
+.status {
+  font-weight: 700;
+  padding: 6px 10px;
+  border-radius: 10px;
+  font-size: 13px;
+  margin-top: 6px;
+}
+
+.status.pending {
+  background: rgba(255,152,0,0.12);
+  color: #b46a00;
+}
+
+.status.confirmed,
+.status.active {
+  background: rgba(0,177,79,0.08);
+  color: #066b2e;
+}
+
+.status.cancelled {
+  background: rgba(255,77,77,0.12);
+  color: #c62828;
+}
+
+.status.completed {
+  background: rgba(33,150,243,0.12);
+  color: #1565c0;
+}
+
+/* Status labels */
+.cancelled-label,
+.completed-label {
+  font-weight: 600;
+  font-size: 14px;
+  padding: 8px 14px;
+  border-radius: 10px;
+}
+
+.cancelled-label {
+  background: rgba(255,77,77,0.08);
+  color: #c62828;
+}
+
+.completed-label {
+  background: rgba(33,150,243,0.08);
+  color: #1565c0;
+}
+
+/* Loading, Error, Empty containers */
+.loading-container,
+.error-container,
+.empty-container {
+  text-align: center;
+  padding: 40px;
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.error-message {
+  color: #c62828;
+  margin-bottom: 16px;
+}
+
+.btn.retry,
+.btn.primary,
+.btn.secondary {
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  transition: transform .12s ease;
+}
+
+.btn.retry {
+  background: var(--accent);
+  color: white;
+}
+
+.btn.primary {
+  background: var(--accent);
+  color: white;
+}
+
+.btn.secondary {
+  background: #f0f0f0;
+  color: #333;
+}
+
+/* Footer buttons */
+.history-footer {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 30px;
+  padding-top: 20px;
+}
+
+/* Actions */
+.history-actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.history-actions .btn {
+  margin-left: 0;
+  padding: 8px 14px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  min-width: 96px;
+  transition: transform .12s ease, box-shadow .12s ease;
+}
+
+.history-actions .btn:hover { transform: translateY(-3px); }
+
+/* Primary action */
+.btn.change {
+  background: var(--accent);
+  color: white;
+  box-shadow: 0 6px 18px rgba(0,123,255,0.18);
+}
+.btn.change:hover {
+  background: #0066dd;
+}
+
+/* Danger action */
+.btn.cancel {
+  background: #ff4d4d;
+  color: white;
+  box-shadow: 0 6px 18px rgba(255,77,77,0.14);
+}
+.btn.cancel:hover:not(:disabled) {
+  background: #dd3b3b;
+}
+.btn.cancel:disabled {
+  background: #ccc;
+  color: #999;
+  cursor: not-allowed;
+  opacity: 0.6;
+  box-shadow: none;
+}
+
+/* Muted / empty */
+.muted {
+  text-align: center;
+  opacity: 0.85;
+  color: #f0f6ff;
+  background: rgba(8,20,40,0.12);
+  display: inline-block;
+  padding: 10px 14px;
+  border-radius: 10px;
+}
+
+/* Reschedule sidebar (bên phải khi reschedule mode) */
+.reschedule-sidebar {
+  width: 45%;
+  min-width: 400px;
+  max-width: 600px;
+  position: sticky;
+  top: 120px;
+  height: fit-content;
+  max-height: calc(100vh - 140px);
+  overflow-y: auto;
+}
+
+/* Reschedule form */
+.reschedule-form {
+  padding: 20px;
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  width: 100%;
+}
+
+.reschedule-form h5 {
+  margin: 0 0 16px 0;
+  color: #1e293b;
+  font-size: 16px;
+}
+
+.tutor-list {
+  margin-bottom: 16px;
+}
+
+.tutor-list label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #475569;
+}
+
+.tutor-btn {
+  padding: 8px 16px;
+  margin: 4px 8px 4px 0;
+  border: 2px solid #e2e8f0;
+  border-radius: 6px;
+  background: white;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 14px;
+}
+
+.tutor-btn:hover {
+  border-color: #2563eb;
+  background: #eff6ff;
+}
+
+.tutor-btn.active {
+  border-color: #2563eb;
+  background: #2563eb;
+  color: white;
+}
+
+.schedule-list {
+  margin-bottom: 16px;
+}
+
+.schedule-list label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #475569;
+}
+
+.date-group {
+  margin-bottom: 16px;
+}
+
+.date-header {
+  font-weight: 700;
+  color: #1e293b;
+  font-size: 14px;
+  margin-bottom: 8px;
+  padding: 8px 12px;
+  background: rgba(37, 99, 235, 0.08);
+  border-radius: 8px;
+}
+
+.schedule-card {
+  background: white;
+  border-radius: 8px;
+  padding: 12px;
+  margin-bottom: 12px;
+  border: 1px solid #e2e8f0;
+}
+
+.schedule-subjects {
+  font-weight: 600;
+  color: #1e293b;
+  margin-bottom: 8px;
+  font-size: 14px;
+}
+
+.schedule-time-slots {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.time-slot-btn {
+  padding: 8px 12px;
+  border: 2px solid #2563eb;
+  border-radius: 6px;
+  background: white;
+  color: #2c5bc1;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.time-slot-btn:hover:not(:disabled) {
+  background: #000000;
+}
+
+.time-slot-btn.active {
+  background: #2563eb;
+  color: white;
+}
+
+.time-slot-btn:disabled {
+  background: #f5f5f5;
+  color: #999;
+  border-color: #ddd;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.reschedule-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.reschedule-actions .btn {
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+
+.reschedule-actions .btn.confirm {
+  background: #2563eb;
+  color: white;
+}
+
+.reschedule-actions .btn.confirm:hover:not(:disabled) {
+  background: #1d4ed8;
+}
+
+.reschedule-actions .btn.cancel {
+  background: #f1f5f9;
+  color: #475569;
+}
+
+.reschedule-actions .btn.cancel:hover:not(:disabled) {
+  background: #e2e8f0;
+}
+
+.reschedule-actions .btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* small responsive tweak */
+@media (max-width: 900px) {
+  .history-card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .history-actions {
+    width: 100%;
+    justify-content: flex-end;
+  }
+  .history-info {
+    width: 100%;
+  }
+  .reschedule-form {
+    width: 100%;
+  }
+}

@@ -1,0 +1,137 @@
+/* Import phông chữ hỗ trợ Unicode tiếng Việt đầy đủ */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+
+/* Đặt lại toàn bộ margin/padding */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', Arial, sans-serif; /* Phông chữ hỗ trợ tiếng Việt đầy đủ */
+  background-color: #f9f9f9; /* Màu nền dịu nhẹ */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; /* Chiều cao toàn màn hình */
+}
+
+/* Khung chính */
+.frame1 {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  max-width: 1440px; /* Chiều rộng tối đa */
+  min-height: 100vh; /* Đánh dấu toàn khung khớp chiều cao màn hình */
+  background-color: #ffffff;
+}
+
+/* Cột trái */
+.left-column {
+  flex: 0 0 40%; /* Cột trái chiếm 40% màn hình */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; /* Căn giữa nội dung theo chiều dọc */
+  padding: 32px;
+}
+
+/* Logo */
+.logobk {
+  width: 120px;
+  height: auto;
+  margin-bottom: 24px; /* Khoảng cách giữa logo và nội dung kế */
+}
+
+/* Nội dung cột trái */
+.content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px; /* Khoảng cách giữa các phần tử */
+}
+
+/* Tiêu đề */
+.text-wrapper {
+  font-size: 36px !important;  /* Tăng kích thước lớn hơn từ 36px lên 42px */
+  font-weight: bold; /* Chữ đậm */
+  color: #232323; /* Màu chữ tối */
+  text-align: center;
+}
+
+/* Form Đăng nhập */
+.form {
+  width: 100%;
+  max-width: 300px; /* Cố định độ rộng form để dễ quản lý */
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Input field (Email/Mật khẩu) */
+.inputField {
+  width: 100%; /* Full chiều ngang container */
+  padding: 10px; /* Khoảng cách bên trong để dễ nhập liệu */
+  border: 1.5px solid #d9d9d9; /* Viền nhạt */
+  border-radius: 8px; /* Bo góc */
+  font-size: 16px; /* Kích thước phù hợp */
+  font-family: inherit; /* Kế thừa font từ body */
+  outline: none; /* Không hiển thị hiệu ứng outline mặc định */
+  transition: border-color 0.3s ease-in-out; /* Hiệu ứng khi focus */
+}
+
+.inputField:focus {
+  border-color: #357aff; /* Thay đổi viền khi focus */
+}
+
+/* Nút đăng nhập */
+.button {
+  width: 100%; /* Nút full container */
+  text-align: center;
+  padding: 12px; /* Khoảng cách trên-dưới */
+  background-color: #357aff; /* Màu xanh chính */
+  color: #ffffff; /* Chữ trắng */
+  border-radius: 8px; /* Bo góc nút */
+  font-weight: 600; /* Font chữ đậm */
+  cursor: pointer;
+  text-decoration: none; /* Bỏ gạch chân link */
+  transition: background-color 0.3s ease-in-out; /* Hiệu ứng hover */
+}
+
+/* Hiệu ứng khi hover nút */
+.button:hover {
+  background-color: #245bb5; /* Màu đậm khi hover */
+}
+
+/* Link "Quay lại tùy chọn" */
+.back-link {
+  font-size: 16px; /* Tăng kích cỡ từ 14px lên 16px */
+  color: #6c6c6c; /* Màu chữ xám nhạt */
+  text-align: center;
+  text-decoration: none; /* Bỏ gạch chân */
+}
+
+.back-link:hover {
+  text-decoration: underline; /* Gạch chân khi hover */
+}
+
+/* Cột phải */
+.right-column {
+  flex: 0 0 60%;
+  display: flex;
+  justify-content: center; /* Căn giữa nội dung */
+  align-items: center; /* Căn giữa nội dung theo chiều dọc */
+  background-color: #f4f4f4;
+  overflow: hidden; /* Nếu có phần dư, ẩn đi */
+}
+
+/* Ảnh nền cột phải */
+.image {
+  width: 100%;
+  height: 100%; /* Đảm bảo ảnh chiếm toàn bộ chiều cao của container */
+  object-fit: cover; /* Đảm bảo ảnh vừa vặn container và không để khoảng trắng */
+  object-position: center; /* Căn chỉnh ảnh vào trung tâm */
+  border-radius: 0; /* Loại bỏ bo góc nếu cần */
+}

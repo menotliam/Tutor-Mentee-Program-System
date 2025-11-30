@@ -1,0 +1,53 @@
+:root{
+    --page-bg:#f7fbff;
+    --card:#ffffff;
+    --muted:#6b7280;
+    --accent:#2563eb;
+    --border:#e6eefb;
+    --shadow:rgba(16,24,40,0.06);
+  }
+  
+  .classlist-page{
+    margin-top:100px;
+    min-height:calc(100vh - 100px);
+    background:var(--page-bg);
+    padding:36px 20px 80px;
+    box-sizing:border-box;
+    font-family:"Poppins", sans-serif;
+  }
+  
+  .classlist-container{
+    max-width:1100px;
+    margin:0 auto;
+    background:var(--card);
+    border-radius:12px;
+    padding:28px;
+    box-shadow:0 8px 24px var(--shadow);
+    border:1px solid var(--border);
+  }
+  
+  .classlist-title{
+    font-size:24px;
+    color:#0f172a;
+    margin-bottom:6px;
+  }
+  
+  .classlist-subtitle{ color:var(--muted); margin-bottom:18px; }
+  
+  .empty-state{ display:flex; flex-direction:column; align-items:center; gap:12px; padding:48px 12px; }
+  .empty-illustration{ width:160px; opacity:0.9; }
+  .empty-text{ font-size:18px; color:#0f172a; font-weight:600; }
+  .empty-note{ color:var(--muted); text-align:center; max-width:600px; }
+  
+  .classes-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:16px; margin-top:12px; }
+  
+  .class-card{ background:linear-gradient(180deg,#ffffff,#fbfdff); border:1px solid var(--border); border-radius:12px; padding:16px; box-shadow:0 6px 18px rgba(16,24,40,0.04); display:flex; justify-content:space-between; align-items:center; }
+  
+  .class-meta .student{ font-weight:700; color:#0f172a; }
+  .class-meta .subject{ color:#0f172a; margin-top:6px; font-weight: 500; font-size: 16px; }
+  .class-meta .datetime{ color:var(--muted); margin-top:8px; font-size:18px; }
+  
+  .class-actions{ color:var(--accent); font-weight:700; }
+  
+  @media (max-width:700px){ .class-card{ flex-direction:column; align-items:flex-start; gap:12px; } }
+  

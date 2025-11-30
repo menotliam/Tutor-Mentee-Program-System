@@ -1,0 +1,213 @@
+:root {
+    --neutralgrey: rgba(113, 113, 113, 1);
+    --neutralsilver: rgba(245, 247, 250, 1);
+  }
+  
+  .tutorlanding {
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-height: 100vh; /* thay vì 2000px */
+  }
+  
+  /* HERO SECTION */
+  .tutorlanding .hero-section {
+    align-items: center;
+    background-color: var(--neutralsilver);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 60px;
+    padding: 80px 8%;
+    margin-top: 90px; /* nằm dưới Navbar */
+    width: 100%; /* thay vì 1440px */
+    box-sizing: border-box;
+  }
+  
+  /* Text section */
+  .tutorlanding .frame {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    max-width: 480px;
+    width: 100%;
+  }
+  
+  .tutorlanding .text {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .tutorlanding .HCMUT-tutor-list {
+    color: transparent;
+    font-family: "Inter-SemiBold", Helvetica, sans-serif;
+    font-size: 58px;
+    font-weight: 600;
+    line-height: 70px;
+  }
+  
+  .tutorlanding .text-wrapper {
+    color: #4d4d4d;
+  }
+  
+  .tutorlanding .span {
+    color: #4caf4f;
+  }
+  
+  .tutorlanding .div {
+    color: var(--neutralgrey);
+    font-family: "Inter-Regular", Helvetica, sans-serif;
+    font-size: 17px;
+    line-height: 22px;
+  }
+  
+  .tutorlanding .div-wrapper {
+    background-color: #0ca207;
+    border-radius: 40px;
+    padding: 16px 28px;
+    width: fit-content;
+    cursor: pointer;
+  }
+  
+  .tutorlanding .text-wrapper-2 {
+    color: #fff;
+    font-size: 18px;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  
+  /* Illustration */
+  .tutorlanding .illustration {
+    display: flex;
+    justify-content: center;
+    width: 50%;
+    min-width: 300px;
+  }
+  
+  .tutorlanding .image {
+    width: 100%;        /* responsive */
+    max-width: 550px;   /* không quá to */
+    height: auto;       /* giữ tỷ lệ ảnh */
+    object-fit: contain;
+  }
+  
+  /* Banner dưới */
+  .tutorlanding .lulut {
+    width: 100%;
+    max-height: 650px;  /* không quá lớn */
+    object-fit: cover;
+    margin-top: 0px;
+  }
+  
+  /* Slider-specific styles (keeps original design for .frame and .illustration) */
+  .slider-container {
+    position: relative;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .slides-viewport {
+    width: 100%;
+    overflow: hidden; /* hide other slides */
+  }
+  
+  .slides-row {
+    display: flex;
+    width: 100%;
+    transition: transform 0.6s cubic-bezier(.22,.9,.37,1);
+  }
+  
+  .slide {
+    min-width: 100%; /* each slide fills the viewport */
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 60px;
+    padding: 80px 8%;
+  }
+  
+  /* arrows */
+  .arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0,0,0,0.35);
+    color: #fff;
+    border: none;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    cursor: pointer;
+    z-index: 10;
+  }
+  
+  .arrow-left { left: 12px; }
+  .arrow-right { right: 12px; }
+  
+  .arrow:hover { background: rgba(0,0,0,0.5); }
+  
+  /* make sure existing .hero-section styles don't conflict when used as single slide */
+  .slider-container .hero-section { padding: 0; margin-top: 0; }
+  
+  @media (max-width: 900px) {
+    .slide { flex-direction: column; padding: 40px 6%; }
+    .tutorlanding .illustration { width: 100%; min-width: auto; }
+    .arrow { width: 40px; height: 40px; font-size: 22px; }
+  }
+  
+  /* Pagination dots */
+  .dots {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 18px;
+    display: flex;
+    gap: 10px;
+    z-index: 12;
+  }
+  
+  .dot {
+    width: 10px;
+    height: 10px;
+    background: rgba(0,0,0,0.18);
+    border-radius: 50%;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    transition: transform 0.18s ease, background 0.18s ease;
+  }
+  
+  .dot:hover { transform: scale(1.12); }
+  .dot.active { background: #0ca207; box-shadow: 0 4px 10px rgba(12,162,7,0.28); transform: scale(1.24); }
+  
+  /* visual polish for slides */
+  .slide {
+    background: linear-gradient(180deg, rgba(255,255,255,0.9), rgba(250,250,250,0.85));
+    border-radius: 14px;
+    box-shadow: 0 10px 30px rgba(17,24,39,0.06);
+  }
+  
+  .slide .frame { padding-left: 6px; }
+  
+  .tutorlanding .HCMUT-tutor-list { font-size: 56px; line-height: 64px; }
+  
+  .arrow {
+    backdrop-filter: blur(6px);
+    box-shadow: 0 6px 18px rgba(17,24,39,0.12);
+    transition: transform 0.16s ease, background 0.16s ease;
+  }
+  .arrow:active { transform: scale(0.98); }
+  
+  /* small screens: move dots under content */
+  @media (max-width: 700px) {
+    .dots { bottom: 8px; gap: 8px; }
+    .dot { width: 12px; height: 12px; }
+    .slide { padding: 32px 6%; }
+  }

@@ -1,0 +1,148 @@
+/* TrangChu.css - font Be Vietnam Pro, tối ưu tiếng Việt */
+/* Load Google Font Be Vietnam Pro */
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700&subset=vietnamese&display=swap');
+
+/* Reset & full height */
+html, body, #root { height: 100%; width: 100%; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* Background gradient (BK style) */
+body {
+  font-family: "Be Vietnam Pro", Arial, sans-serif; /* Font tối ưu tiếng Việt */
+  background: linear-gradient(180deg, #1E90FF 0%, #87CEEB 100%);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+}
+
+/* Center whole viewport */
+.desktop {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: transparent;
+}
+
+/* Card trắng chính, mọi thứ căn giữa */
+.frame-card {
+  width: 100%;
+  max-width: 560px;
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 36px 40px;
+  box-shadow: 0 14px 40px rgba(12, 35, 70, 0.12);
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* quan trọng: căn giữa nội dung */
+  gap: 18px;
+  margin: 0 auto;
+}
+
+/* Logo lớn, nằm giữa */
+.card-logo {
+  width: 140px;
+  height: auto;
+  display: block;
+  margin: 6px auto;
+  object-fit: contain;
+}
+
+/* Divider */
+.card-divider {
+  width: 80%;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(0,0,0,0.06), rgba(0,0,0,0.02));
+  margin: 6px 0;
+}
+
+/* Subheading centered in Vietnamese */
+.card-subtitle {
+  width: 100%;
+  text-align: center;
+  color: #0b60c7;
+  font-weight: 600;
+  font-size: 20px; /* Chữ lớn hơn */
+  margin: 0;
+  padding-top: 6px;
+}
+
+/* Button list: full width but centered content */
+.btn-list {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+}
+
+/* Buttons: white background, centered text, no icons */
+.btn-white {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Canh giữa nội dung text */
+  width: 100%;
+  max-width: 520px;
+  padding: 14px 18px;
+  border-radius: 10px;
+  background: #ffffff;
+  border: 1px solid rgba(10,30,60,0.06);
+  box-shadow: 0 6px 14px rgba(10,30,60,0.04);
+  text-decoration: none;
+  color: #0b2b4a;
+  font-weight: 600;
+  font-size: 18px; /* Chữ lớn hơn */
+  letter-spacing: 0.2px;
+  transition: transform .14s ease, box-shadow .14s ease;
+}
+
+/* Text inside button */
+.btn-text {
+  display: inline-block;
+  text-align: center;
+  line-height: 1.05;
+}
+
+/* Hover effect */
+.btn-white:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 18px 40px rgba(10,30,80,0.10);
+}
+
+/* Footer centered */
+.card-footer {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(0,0,0,0.03);
+  margin-top: 6px;
+}
+
+.lang { color: #0b60c7; font-size: 14px; }
+.cookie-btn {
+  background: #0b60c7;
+  color: #fff;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+/* Responsive giảm kích thước hợp lý trên tablet/mobile */
+@media (max-width: 720px) {
+  .frame-card { padding: 24px; max-width: 460px; }
+  .card-logo { width: 120px; }
+  .card-subtitle { font-size: 18px; }
+  .btn-white { padding: 12px 16px; font-size: 16px; max-width: 420px; }
+}
+@media (max-width: 420px) {
+  .frame-card { padding: 18px; max-width: 360px; }
+  .card-logo { width: 100px; }
+  .card-subtitle { font-size: 16px; }
+  .btn-white { padding: 10px 12px; font-size: 15px; border-radius: 8px; }
+}
