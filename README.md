@@ -24,12 +24,12 @@ Built with the tools and technologies:
 ![Swiper](https://img.shields.io/badge/Swiper-6332F6?style=for-the-badge&logo=swiper&logoColor=white)
 ![Jest](https://img.shields.io/badge/Jest-C21325?style=for-the-badge&logo=jest&logoColor=white)
 
-</div>
-
 ![Build](https://img.shields.io/badge/CI-not_configured-lightgrey?style=flat-square)
 ![Coverage](https://img.shields.io/badge/coverage-not_measured-lightgrey?style=flat-square)
 ![Node.js](https://img.shields.io/badge/node-%3E%3D20.x-339933?style=flat-square&logo=node.js&logoColor=white)
 ![License](https://img.shields.io/badge/license-ISC-blue?style=flat-square)
+</div>
+
 
 Tutor-Mentee-Program-System is a full-stack web platform that connects students with tutors for scheduling, booking, and managing mentorship sessions. It solves fragmented mentoring workflows by centralizing authentication, tutor availability, booking lifecycle, and session tracking in one system. The primary users are students, instructors, and administrators in an academic support environment.
 
