@@ -10,7 +10,9 @@
     width: 100%;
     min-height: 100vh; /* thay vì 2000px */
   }
-  
+  .dark .tutorlanding {
+    background-color: #1a1a1a;
+  }
   /* HERO SECTION */
   .tutorlanding .hero-section {
     align-items: center;
@@ -24,7 +26,9 @@
     width: 100%; /* thay vì 1440px */
     box-sizing: border-box;
   }
-  
+  .dark .tutorlanding .hero-section {
+    background-color: #1a1a1a;
+  }
   /* Text section */
   .tutorlanding .frame {
     display: flex;
@@ -43,7 +47,7 @@
   .tutorlanding .HCMUT-tutor-list {
     color: transparent;
     font-family: "Inter-SemiBold", Helvetica, sans-serif;
-    font-size: 58px;
+    font-size: 50px;
     font-weight: 600;
     line-height: 70px;
   }
@@ -51,7 +55,9 @@
   .tutorlanding .text-wrapper {
     color: #4d4d4d;
   }
-  
+  .dark .tutorlanding .text-wrapper {
+    color: var(--text-primary);
+  }
   .tutorlanding .span {
     color: #4caf4f;
   }
@@ -62,7 +68,9 @@
     font-size: 17px;
     line-height: 22px;
   }
-  
+  .dark .tutorlanding .div {
+    color: var(--text-secondary);
+  }
   .tutorlanding .div-wrapper {
     background-color: #0ca207;
     border-radius: 40px;
@@ -196,7 +204,7 @@
   
   .slide .frame { padding-left: 6px; }
   
-  .tutorlanding .HCMUT-tutor-list { font-size: 56px; line-height: 64px; }
+  .tutorlanding .HCMUT-tutor-list { font-size: 50px; line-height: 64px; }
   
   .arrow {
     backdrop-filter: blur(6px);

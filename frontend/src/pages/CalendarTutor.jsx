@@ -550,7 +550,7 @@ export default function CalendarTutor() {
           setEditingScheduleKey(null);
         } else {
           // Không có thay đổi nào được lưu
-          alert("Không có thay đổi nào để lưu!");
+          alert("Không thể thay đổi lịch rảnh hiện tại!");
         }
       } else {
         alert(data.message || "Lưu lịch rảnh thất bại. Vui lòng thử lại.");
@@ -571,8 +571,7 @@ export default function CalendarTutor() {
       <>
         <NavbarTutor />
         <div className="tutorcalendar-container">
-          <h1 className="tutortitle">Update your available time</h1>
-          <p>Đang tải...</p>
+          <h1 className="tutortitle">Đang tải lịch tư vấn...</h1>
         </div>
       </>
     );
@@ -583,8 +582,8 @@ export default function CalendarTutor() {
       <>
         <NavbarTutor />
         <div className="tutorcalendar-container">
-          <h1 className="tutortitle">Update your available time</h1>
-          <p style={{ color: "red" }}>{error}</p>
+          <h1 className="tutortitle">Cập nhật lịch tư vấn</h1>
+          <p className="error-text">{error}</p>
           <p>
             Vui lòng cập nhật danh sách môn học trong profile trước khi tạo
             lịch rảnh.
@@ -606,9 +605,9 @@ export default function CalendarTutor() {
     <>
       <NavbarTutor />
       <div className="tutorcalendar-container">
-        <h1 className="tutortitle">Update your available time</h1>
+        <h1 className="tutortitle">Cập nhật lịch tư vấn</h1>
 
-        {error && <p style={{ color: "red" }}>{error}</p>}
+        {error && <p className="error-text">{error}</p>}
 
         <div className="calendar-main-layout">
           {/* Cột trái: Calendar */}
@@ -650,7 +649,7 @@ export default function CalendarTutor() {
                   <h3>
                     {editingSchedule.date}
                     {editingSchedule.scheduleId && (
-                      <span style={{ fontSize: "12px", color: "#666", marginLeft: "8px" }}>
+                      <span className="muted-text" style={{ fontSize: "12px", marginLeft: "8px" }}>
                         (Đã lưu)
                       </span>
                     )}
@@ -691,7 +690,7 @@ export default function CalendarTutor() {
                       })}
                     </div>
                     {editingSchedule.timeSlots?.length > 0 && (
-                      <p style={{ fontSize: "12px", color: "#666", marginTop: "8px" }}>
+                      <p className="muted-text" style={{ fontSize: "12px", marginTop: "8px" }}>
                         Đã chọn: {editingSchedule.timeSlots.length} khung giờ
                       </p>
                     )}
@@ -700,7 +699,7 @@ export default function CalendarTutor() {
                   <div className="subjects-section">
                     <h4>Môn học: <span style={{ color: "red" }}>*</span></h4>
                     {teachingSubjects.length === 0 ? (
-                      <p style={{ color: "orange" }}>
+                      <p className="warning-text">
                         Vui lòng cập nhật danh sách môn học trong profile trước.
                       </p>
                     ) : (
@@ -764,7 +763,7 @@ export default function CalendarTutor() {
                 return (
                   <div className="schedule-card" key={scheduleKey}>
                     <div className="schedule-header">
-                      <h3>{sched.date} <span style={{ fontSize: "12px", color: "#666" }}>(Mới)</span></h3>
+                      <h3>{sched.date} <span className="muted-text" style={{ fontSize: "12px" }}>(Mới)</span></h3>
                       <button
                         className="remove-btn"
                         onClick={() => removeSchedule(scheduleKey)}
@@ -800,7 +799,7 @@ export default function CalendarTutor() {
                       <div className="subjects-section">
                         <h4>Môn học: <span style={{ color: "red" }}>*</span></h4>
                         {teachingSubjects.length === 0 ? (
-                          <p style={{ color: "orange" }}>
+                          <p className="warning-text">
                             Vui lòng cập nhật danh sách môn học trong profile trước.
                           </p>
                         ) : (

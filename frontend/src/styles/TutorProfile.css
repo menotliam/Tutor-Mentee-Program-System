@@ -10,6 +10,18 @@
     --tutor-profile-hover: #3b82f6;
     --tutor-profile-shadow: rgba(0, 0, 0, 0.1);
   }
+
+  /* Dark mode tutor profile colors */
+  .dark {
+    --tutor-profile-bg: #1a1a1a;
+    --tutor-profile-card: #2d2d2d;
+    --tutor-profile-border: #404040;
+    --tutor-profile-text: #e5e5e5;
+    --tutor-profile-label: #b0b0b0;
+    --tutor-profile-placeholder: #888;
+    --tutor-profile-readonly-bg: #3a3a3a;
+    --tutor-profile-shadow: rgba(0, 0, 0, 0.3);
+  }
   
   .tutor-profile-page {
     margin-top: 100px;
@@ -66,6 +78,13 @@
     font-size: 14px;
     font-weight: 500;
     margin-bottom: 8px;
+    transition: color 0.3s ease;
+  }
+
+  /* Dark mode label - đảm bảo labels sáng và dễ thấy */
+  .dark .form-group label {
+    color: var(--tutor-profile-label);
+    font-weight: 600;
   }
   
   .form-group input {
@@ -75,8 +94,15 @@
     border-radius: 8px;
     font-size: 16px;
     color: var(--tutor-profile-text);
+    background-color: var(--tutor-profile-card);
     transition: all 0.2s ease;
     box-sizing: border-box;
+  }
+
+  /* Dark mode input - editable fields (not readonly) */
+  .dark .form-group input:not(.readonly) {
+    background-color: var(--input-bg);
+    color: var(--tutor-profile-text);
   }
   
   .form-group input:focus {
@@ -108,11 +134,18 @@
     border-radius: 8px;
     font-size: 16px;
     color: var(--tutor-profile-text);
+    background-color: var(--tutor-profile-card);
     transition: all 0.2s ease;
     box-sizing: border-box;
     font-family: inherit;
     resize: vertical;
     min-height: 120px;
+  }
+
+  /* Dark mode textarea */
+  .dark .form-group textarea {
+    background-color: var(--input-bg);
+    color: var(--tutor-profile-text);
   }
 
   .form-group textarea:focus {

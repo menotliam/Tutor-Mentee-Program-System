@@ -1,6 +1,32 @@
 :root {
   --primary: #0FA9DC;
   --font-main: 'Roboto', system-ui, Avenir, Helvetica, Arial, sans-serif;
+  
+  /* Light mode colors */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f9f9f9;
+  --bg-tertiary: #f4f4f4;
+  --text-primary: #213547;
+  --text-secondary: #6c6c6c;
+  --text-tertiary: #888;
+  --border-color: #d9d9d9;
+  --shadow: rgba(0, 0, 0, 0.1);
+  --card-bg: #ffffff;
+  --input-bg: #ffffff;
+}
+
+/* Dark mode colors */
+.dark {
+  --bg-primary: #1a1a1a;
+  --bg-secondary: #2d2d2d;
+  --bg-tertiary: #3a3a3a;
+  --text-primary: #e5e5e5;
+  --text-secondary: #b0b0b0;
+  --text-tertiary: #888;
+  --border-color: #404040;
+  --shadow: rgba(0, 0, 0, 0.3);
+  --card-bg: #2d2d2d;
+  --input-bg: #3a3a3a;
 }
 
 /* Reset cơ bản */
@@ -13,23 +39,25 @@
 /* Body không còn bị "center" nữa */
 body {
   font-family: var(--font-main);
-  background-color: #ffffff;
-  color: #213547;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
   min-width: 320px;
   min-height: 100vh;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Force the main app background to white so transient semi-transparent
-   elements (eg. navbar) don't make the page look blue */
+/* Force the main app background to use CSS variable */
 html, body, #root, main {
-  background-color: #ffffff !important;
+  background-color: var(--bg-primary) !important;
+  transition: background-color 0.3s ease;
 }
 
 /* Link mặc định */
 a {
   font-weight: 500;
-  color: #0FA9DC;
+  color: var(--primary);
   text-decoration: none;
+  transition: opacity 0.3s ease;
 }
 a:hover {
   opacity: 0.8;

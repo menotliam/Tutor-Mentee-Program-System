@@ -202,19 +202,11 @@ export default function TutorRegister() {
           {gpaCheckResult && (
             <div 
               className={`gpa-check-result ${gpaCheckResult.eligible ? 'success' : 'error'}`}
-              style={{
-                padding: '20px',
-                marginBottom: '20px',
-                borderRadius: '8px',
-                backgroundColor: gpaCheckResult.eligible ? '#d4edda' : '#f8d7da',
-                border: `1px solid ${gpaCheckResult.eligible ? '#c3e6cb' : '#f5c6cb'}`,
-                color: gpaCheckResult.eligible ? '#155724' : '#721c24'
-              }}
             >
-              <h3 style={{ marginTop: 0 }}>
+              <h3>
                 {gpaCheckResult.eligible ? '✅ Đủ điều kiện' : '❌ Không đủ điều kiện'}
               </h3>
-              <p style={{ marginBottom: 0 }}>{gpaCheckResult.message}</p>
+              <p>{gpaCheckResult.message}</p>
             </div>
           )}
 
@@ -260,9 +252,8 @@ export default function TutorRegister() {
           ) : (
             <div className="action-section">
               <button
-                className="apply-button"
+                className="apply-button back-button"
                 onClick={() => navigate('/firstpage')}
-                style={{ backgroundColor: '#6c757d' }}
               >
                 Quay lại trang chủ
               </button>

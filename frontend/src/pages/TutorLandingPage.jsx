@@ -32,7 +32,7 @@ export default function TutorLandingPage() {
     },
     // duplicated / additional slide to make 4 slides total
     {
-      titleTop: "HCMUT",
+      titleTop: "HCMUT Tutor",
       titleBottom: "Tutor List",
       description: "Các tutor hàng đầu sẵn sàng hỗ trợ bạn",
       cta: "Xem ngay",

@@ -6,6 +6,12 @@
   min-width: 1440px;
   position: relative;
   width: 100%;
+  transition: background-color 0.3s ease;
+}
+
+/* Dark mode frame */
+.dark .dangkyframe {
+  background-color: var(--bg-primary);
 }
 
 .dangkyframe .left-column {
@@ -47,6 +53,12 @@
   text-align: center;
   top: 0;
   white-space: nowrap;
+  transition: color 0.3s ease;
+}
+
+/* Dark mode title */
+.dark .dangkyframe .text-wrapper {
+  color: var(--text-primary);
 }
 
 .dangkyframe .form {
@@ -77,6 +89,14 @@
   text-align: left;
   white-space: nowrap;
   width: 399px;
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+
+/* Dark mode input */
+.dark .dangkyframe .input {
+  background-color: var(--input-bg);
+  border-color: var(--border-color);
+  color: var(--text-primary);
 }
 
 .dangkyframe .input1 {
@@ -195,6 +215,12 @@
   line-height: 27px;
   position: relative;
   text-align: center;
+  transition: color 0.3s ease;
+}
+
+/* Dark mode link */
+.dark .dangkyframe .text-wrapper-4 {
+  color: var(--text-secondary);
 }
 
 .dangkyframe .logobk {

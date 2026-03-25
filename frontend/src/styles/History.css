@@ -7,14 +7,31 @@
   --muted: #7a8596;
   --radius: 14px;
   --shadow: 0 10px 30px rgba(12,40,80,0.12);
+  --history-bg-overlay: rgba(255, 255, 255, 0.95);
+}
+
+/* Dark mode variables */
+.dark {
+  --bg-start: rgba(10, 10, 30, 0.95);
+  --bg-end: rgba(15, 20, 40, 0.95);
+  --card-bg: rgba(45, 45, 45, 0.96);
+  --glass-bg: rgba(255,255,255,0.05);
+  --accent: #3b82f6;
+  --muted: #b0b0b0;
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  --history-bg-overlay: rgba(30, 30, 30, 0.95);
 }
 
 /* Page background: image + subtle gradient overlay */
 .history-page {
   margin-top: 90px;
-  padding: 40px;
-  min-height: 100vh;
+  padding: 40px 40px 0 40px;
+  min-height: calc(100vh - 90px);
+  height: calc(100vh - 90px);
   font-family: "Poppins", sans-serif;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
 
   /* background image (public/) with soft gradient overlay */
   background:
@@ -25,7 +42,15 @@
   background-repeat: no-repeat;
   background-attachment: fixed;
   color: #0b2140;
-  box-sizing: border-box;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* Dark mode page background */
+.dark .history-page {
+  background:
+    linear-gradient(180deg, rgba(10,10,30,0.6) 0%, rgba(15,20,40,0.5) 40%, rgba(0,0,0,0.3) 100%),
+    url("/lulut.png");
+  color: #e5e5e5;
 }
 
 /* Title */
@@ -37,6 +62,7 @@
   color: #fff;
   text-shadow: 0 3px 18px rgba(0,0,0,0.35);
   letter-spacing: 0.2px;
+  flex-shrink: 0;
 }
 
 /* Container for history list and reschedule sidebar */
@@ -47,6 +73,7 @@
   margin: 0 auto;
   width: 100%;
   transition: all 0.3s ease;
+  min-height: 0;
 }
 
 .history-container.reschedule-mode {
@@ -61,7 +88,7 @@
   max-width: 1100px;
   margin: 0 auto;
   width: 100%;
-  padding-bottom: 40px;
+  padding-bottom: 20px;
   transition: all 0.3s ease;
 }
 
@@ -79,10 +106,11 @@
   box-shadow: var(--shadow);
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  transition: transform .18s ease, box-shadow .18s ease;
+  align-items: flex-start;
+  transition: transform .18s ease, box-shadow .18s ease, background-color 0.3s ease;
   border-left: 6px solid transparent;
-  overflow: hidden;
+  min-height: fit-content;
+  width: 100%;
 }
 
 .history-card:hover {
@@ -95,17 +123,36 @@
 .history-card[data-status="Đang chờ xác nhận"] { border-left-color: #ffb74d; }
 
 /* Info text */
+.history-info {
+  flex: 1;
+  min-width: 0;
+}
+
 .history-info h4 {
-  margin: 0 0 6px 0;
+  margin: 0 0 8px 0;
   font-size: 18px;
   color: #0b2340;
   font-weight: 700;
+  transition: color 0.3s ease;
+}
+
+/* Dark mode h4 */
+.dark .history-info h4 {
+  color: var(--text-primary);
 }
 
 .history-info p {
-  margin: 8px 0;
+  margin: 6px 0;
   color: #213447;
   font-size: 16px;
+  transition: color 0.3s ease;
+  line-height: 1.5;
+  word-wrap: break-word;
+}
+
+/* Dark mode p */
+.dark .history-info p {
+  color: var(--text-secondary);
 }
 
 /* Status */
@@ -157,6 +204,48 @@
   color: #1565c0;
 }
 
+/* Content wrapper for scrollable area */
+.history-content-wrapper {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+/* Custom scrollbar for content wrapper */
+.history-content-wrapper::-webkit-scrollbar {
+  width: 8px;
+}
+
+.history-content-wrapper::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+
+.history-content-wrapper::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+
+.history-content-wrapper::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+/* Dark mode scrollbar */
+.dark .history-content-wrapper::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.dark .history-content-wrapper::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.dark .history-content-wrapper::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
 /* Loading, Error, Empty containers */
 .loading-container,
 .error-container,
@@ -167,6 +256,7 @@
   border-radius: var(--radius);
   max-width: 600px;
   margin: 0 auto;
+  flex: 1;
 }
 
 .error-message {
@@ -205,15 +295,32 @@
   display: flex;
   justify-content: center;
   gap: 16px;
-  margin-top: 30px;
-  padding-top: 20px;
+  padding: 20px;
+  flex-shrink: 0;
+  margin-top: auto;
+  margin-left: -40px;
+  margin-right: -40px;
+  margin-bottom: 0;
+  background: var(--history-bg-overlay);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 -4px 10px rgba(255, 1, 1, 0.1);
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Dark mode footer */
+.dark .history-footer {
+  border-top-color: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.3);
 }
 
 /* Actions */
 .history-actions {
   display: flex;
   gap: 10px;
-  align-items: center;
+  align-items: flex-start;
+  flex-shrink: 0;
+  margin-left: 20px;
+  margin-top: 75px;
 }
 
 .history-actions .btn {
@@ -238,7 +345,13 @@
 .btn.change:hover {
   background: #0066dd;
 }
-
+.btn.change:disabled {
+  background: #ccc;
+  color: #999;
+  cursor: not-allowed;
+  opacity: 0.6;
+  box-shadow: none;
+}
 /* Danger action */
 .btn.cancel {
   background: #ff4d4d;
@@ -265,6 +378,13 @@
   display: inline-block;
   padding: 10px 14px;
   border-radius: 10px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Dark mode muted */
+.dark .muted {
+  color: var(--text-secondary);
+  background: rgba(255, 255, 255, 0.05);
 }
 
 /* Reschedule sidebar (bên phải khi reschedule mode) */
@@ -272,11 +392,42 @@
   width: 45%;
   min-width: 400px;
   max-width: 600px;
-  position: sticky;
-  top: 120px;
   height: fit-content;
-  max-height: calc(100vh - 140px);
+  max-height: 100%;
   overflow-y: auto;
+  align-self: flex-start;
+}
+
+/* Custom scrollbar for reschedule sidebar */
+.reschedule-sidebar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.reschedule-sidebar::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+
+.reschedule-sidebar::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+
+.reschedule-sidebar::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+/* Dark mode scrollbar for reschedule sidebar */
+.dark .reschedule-sidebar::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.dark .reschedule-sidebar::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.dark .reschedule-sidebar::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
 }
 
 /* Reschedule form */
@@ -292,6 +443,12 @@
   margin: 0 0 16px 0;
   color: #1e293b;
   font-size: 16px;
+  transition: color 0.3s ease;
+}
+
+/* Dark mode reschedule form h5 */
+.dark .reschedule-form h5 {
+  color: var(--text-primary);
 }
 
 .tutor-list {
@@ -314,6 +471,19 @@
   cursor: pointer;
   transition: all 0.2s;
   font-size: 14px;
+  color: #1e293b;
+}
+
+/* Dark mode tutor button */
+.dark .tutor-btn {
+  background: var(--card-bg);
+  border-color: var(--border-color);
+  color: var(--text-primary);
+}
+
+.dark .tutor-btn:hover {
+  background: var(--bg-tertiary);
+  border-color: var(--accent);
 }
 
 .tutor-btn:hover {
@@ -350,6 +520,13 @@
   padding: 8px 12px;
   background: rgba(37, 99, 235, 0.08);
   border-radius: 8px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Dark mode date header */
+.dark .date-header {
+  background: rgba(59, 130, 246, 0.15);
+  color: var(--text-primary);
 }
 
 .schedule-card {
@@ -358,6 +535,13 @@
   padding: 12px;
   margin-bottom: 12px;
   border: 1px solid #e2e8f0;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Dark mode schedule card */
+.dark .schedule-card {
+  background: var(--card-bg);
+  border-color: var(--border-color);
 }
 
 .schedule-subjects {
@@ -365,6 +549,12 @@
   color: #1e293b;
   margin-bottom: 8px;
   font-size: 14px;
+  transition: color 0.3s ease;
+}
+
+/* Dark mode schedule subjects */
+.dark .schedule-subjects {
+  color: var(--text-primary);
 }
 
 .schedule-time-slots {
@@ -385,6 +575,17 @@
   font-weight: 700;
 }
 
+/* Dark mode time slot button */
+.dark .time-slot-btn {
+  background: var(--card-bg);
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+.dark .time-slot-btn:hover:not(:disabled) {
+  background: var(--bg-tertiary);
+}
+
 .time-slot-btn:hover:not(:disabled) {
   background: #000000;
 }
@@ -400,6 +601,13 @@
   border-color: #ddd;
   cursor: not-allowed;
   opacity: 0.6;
+}
+
+/* Dark mode disabled button */
+.dark .time-slot-btn:disabled {
+  background: var(--bg-tertiary);
+  color: var(--muted);
+  border-color: var(--border-color);
 }
 
 .reschedule-actions {
@@ -450,6 +658,7 @@
   .history-actions {
     width: 100%;
     justify-content: flex-end;
+    margin-left: 0;
   }
   .history-info {
     width: 100%;

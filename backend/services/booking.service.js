@@ -1,7 +1,5 @@
 const Class = require('../models/class.model');
 const Booking = require('../models/booking.model');
-const notificationService = require('./notification.service');
-const schedulerService = require('./scheduler.service');
 
 const CONFIG = {
   CANCEL_LIMIT_HOURS: 3,

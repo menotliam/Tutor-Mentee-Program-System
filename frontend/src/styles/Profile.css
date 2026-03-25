@@ -10,6 +10,18 @@
     --profile-hover: #3b82f6;
     --profile-shadow: rgba(0, 0, 0, 0.1);
   }
+
+  /* Dark mode profile colors */
+  .dark {
+    --profile-bg: #1a1a1a;
+    --profile-card: #2d2d2d;
+    --profile-border: #404040;
+    --profile-text: #e5e5e5;
+    --profile-label: #d0d0d0;
+    --profile-placeholder: #888;
+    --profile-readonly-bg: #3a3a3a;
+    --profile-shadow: rgba(0, 0, 0, 0.3);
+  }
   
   .profile-page {
     margin-top: 100px;
@@ -66,6 +78,13 @@
     font-size: 14px;
     font-weight: 500;
     margin-bottom: 8px;
+    transition: color 0.3s ease;
+  }
+
+  /* Dark mode label - đảm bảo labels sáng và dễ thấy */
+  .dark .form-group label {
+    color: var(--profile-label);
+    font-weight: 600;
   }
   
   .form-group input {
@@ -75,8 +94,22 @@
     border-radius: 8px;
     font-size: 16px;
     color: var(--profile-text);
+    background-color: var(--profile-card);
     transition: all 0.2s ease;
     box-sizing: border-box;
+  }
+
+  /* Dark mode input - editable fields (not readonly) */
+  .dark .form-group input:not(.readonly) {
+    background-color: var(--input-bg) !important;
+    color: var(--profile-text) !important;
+    border-color: var(--profile-border);
+  }
+
+  /* Đảm bảo input số điện thoại có background tối trong dark mode */
+  .dark .form-group input[type="tel"] {
+    background-color: var(--input-bg) !important;
+    color: var(--profile-text) !important;
   }
   
   .form-group input:focus {
@@ -93,6 +126,13 @@
     background-color: var(--profile-readonly-bg);
     cursor: not-allowed;
     border: 1px dashed var(--profile-border);
+    color: var(--profile-text);
+  }
+
+  /* Dark mode readonly input */
+  .dark .form-group input.readonly {
+    background-color: var(--profile-readonly-bg);
+    color: var(--profile-text);
   }
 
   .form-group input.error {

@@ -329,9 +329,9 @@ export default function HistoryPage() {
   // Map status sang tiếng Việt
   const getStatusLabel = (status) => {
     const statusMap = {
-      "ACTIVE": "Đang hoạt động",
+      "ACTIVE": "Đã đặt lịch",
       "CANCELLED": "Đã hủy",
-      "COMPLETED": "Đã đặt lịch"
+      "COMPLETED": "Đã hoàn thành"
     };
     return statusMap[status] || status;
   };
@@ -352,28 +352,29 @@ export default function HistoryPage() {
       <div className="history-page">
         <h2 className="history-title">Lịch sử buổi học đã đặt</h2>
 
-        {loading ? (
-          <div className="loading-container">
-            <p>Đang tải lịch sử...</p>
-          </div>
-        ) : error ? (
-          <div className="error-container">
-            <p className="error-message">{error}</p>
-            <button className="btn retry" onClick={fetchBookings}>
-              Thử lại
-            </button>
-          </div>
-        ) : bookings.length === 0 ? (
-          <div className="empty-container">
-            <p className="muted">Chưa có buổi học nào được đặt.</p>
-            <button className="btn primary" onClick={() => navigate("/calendar")}>
-              Đặt lịch ngay
-            </button>
-          </div>
-        ) : (
-          <div className={`history-container ${isRescheduleMode ? 'reschedule-mode' : ''}`}>
-            {/* Lịch sử - bên trái khi reschedule mode, center khi bình thường */}
-            <div className={`history-list ${isRescheduleMode ? 'history-list-left' : ''}`}>
+        <div className="history-content-wrapper">
+          {loading ? (
+            <div className="loading-container">
+              <p>Đang tải lịch sử...</p>
+            </div>
+          ) : error ? (
+            <div className="error-container">
+              <p className="error-message">{error}</p>
+              <button className="btn retry" onClick={fetchBookings}>
+                Thử lại
+              </button>
+            </div>
+          ) : bookings.length === 0 ? (
+            <div className="empty-container">
+              <p className="muted">Chưa có buổi học nào được đặt.</p>
+              <button className="btn primary" onClick={() => navigate("/calendar")}>
+                Đặt lịch ngay
+              </button>
+            </div>
+          ) : (
+            <div className={`history-container ${isRescheduleMode ? 'reschedule-mode' : ''}`}>
+              {/* Lịch sử - bên trái khi reschedule mode, center khi bình thường */}
+              <div className={`history-list ${isRescheduleMode ? 'history-list-left' : ''}`}>
               {bookings.map((b) => {
               // Xử lý date và time cho cả booking từ Class và TutorSchedule
               let date, time;
@@ -419,8 +420,9 @@ export default function HistoryPage() {
                         {(!b.isTutorSchedule || !canReschedule(b)) && (
                           <button 
                             className="btn change" 
-                            onClick={() => navigate("/calendar")}
+                            onClick={() => handleStartReschedule(b)}
                             title={b.isTutorSchedule ? "Chỉ có thể đổi lịch trước giờ bắt đầu ít nhất 3 tiếng" : "Chuyển sang trang đặt lịch"}
+                            disabled={!b.isTutorSchedule || !canReschedule(b)}
                           >
                             Đổi lịch
                           </button>
@@ -555,7 +557,8 @@ export default function HistoryPage() {
               </div>
             )}
           </div>
-        )}
+          )}
+        </div>
 
         <div className="history-footer">
           <button className="btn secondary" onClick={fetchBookings}>

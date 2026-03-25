@@ -1,10 +1,33 @@
+/* CSS Variables */
+:root {
+    --calendar-tutor-bg-start: #9fe0ff;
+    --calendar-tutor-bg-end: #1c82f7;
+    --calendar-tutor-card: #ffffff;
+    --calendar-tutor-text: #333;
+    --calendar-tutor-text-secondary: #555;
+    --calendar-tutor-border: #ddd;
+    --calendar-tutor-shadow: rgba(0, 0, 0, 0.13);
+  }
+
+  /* Dark mode variables */
+  .dark {
+    --calendar-tutor-bg-start: #1a1a2e;
+    --calendar-tutor-bg-end: #16213e;
+    --calendar-tutor-card: var(--card-bg);
+    --calendar-tutor-text: var(--text-primary);
+    --calendar-tutor-text-secondary: var(--text-secondary);
+    --calendar-tutor-border: var(--border-color);
+    --calendar-tutor-shadow: rgba(0, 0, 0, 0.3);
+  }
+
 /* Toàn trang có nền gradient */
 body {
-    background: linear-gradient(180deg, #9fe0ff 0%, #1c82f7 100%);
+    background: linear-gradient(180deg, var(--calendar-tutor-bg-start) 0%, var(--calendar-tutor-bg-end) 100%);
     background-attachment: fixed;
     margin: 0;
     padding: 0;
     font-family: "Poppins", sans-serif;
+    transition: background 0.3s ease;
   }
   
   /* Căn trang nằm dưới navbar */
@@ -19,7 +42,15 @@ body {
     align-items: center;
     padding: 0 20px 100px 20px; /* tránh dính đáy */
   }
+  .tutorcalendar-container h1 {
+    color: rgb(119, 69, 145);
+    transition: color 0.3s ease;
+  }
 
+  /* Dark mode title */
+  .dark .tutorcalendar-container h1 {
+    color: #d0a5f0;
+  }
   /* Layout 3 cột */
   .calendar-main-layout {
     width: 100%;
@@ -70,6 +101,13 @@ body {
     border-radius: 20px;
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.18);
     margin-bottom: 45px;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  /* Dark mode calendar card */
+  .dark .calendar-card {
+    background: var(--calendar-tutor-card);
+    box-shadow: 0 8px 25px var(--calendar-tutor-shadow);
   }
   
   .tutorreact-calendar__tile--active {
@@ -100,12 +138,39 @@ body {
     padding: 22px 25px;
     border-radius: 14px;
     box-shadow: 0 6px 18px rgba(0, 0, 0, 0.13);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  /* Dark mode schedule card */
+  .dark .schedule-card {
+    background: var(--calendar-tutor-card);
+    box-shadow: 0 6px 18px var(--calendar-tutor-shadow);
   }
   
   .schedule-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+  }
+
+  .schedule-header h3 {
+    color: var(--calendar-tutor-text);
+    transition: color 0.3s ease;
+  }
+
+  /* Dark mode schedule header */
+  .dark .schedule-header h3 {
+    color: var(--calendar-tutor-text);
+  }
+
+  .schedule-header h3 span {
+    color: var(--calendar-tutor-text-secondary);
+    transition: color 0.3s ease;
+  }
+
+  /* Dark mode schedule header span */
+  .dark .schedule-header h3 span {
+    color: var(--calendar-tutor-text-secondary);
   }
   
   .remove-btn {
@@ -138,6 +203,13 @@ body {
     color: #007bff;
     font-weight: 500;
   }
+
+  /* Dark mode slot button */
+  .dark .slot-btn {
+    background: var(--card-bg);
+    color: var(--accent);
+    border-color: var(--accent);
+  }
   
   .slot-btn.active {
     background: #007bff;
@@ -150,6 +222,13 @@ body {
     border-color: #ddd;
     cursor: not-allowed;
     opacity: 0.6;
+  }
+
+  /* Dark mode disabled slot button */
+  .dark .slot-btn.disabled {
+    background: var(--bg-tertiary);
+    color: var(--muted);
+    border-color: var(--border-color);
   }
 
   .slot-btn.disabled:hover {
@@ -204,6 +283,14 @@ body {
     font-weight: 600;
     color: #333;
     margin: 0;
+    transition: color 0.3s ease;
+  }
+
+  /* Dark mode labels - đảm bảo labels dễ thấy */
+  .dark .slots-section h4,
+  .dark .subjects-section h4,
+  .dark .notes-section h4 {
+    color: var(--text-primary);
   }
 
   /* Subjects Radio Group */
@@ -224,6 +311,12 @@ body {
     background: white;
   }
 
+  /* Dark mode subject radio label */
+  .dark .subject-radio-label {
+    background: var(--card-bg);
+    border-color: var(--border-color);
+  }
+
   .subject-radio-label:hover {
     border-color: #28a745;
     background: #f0f8f0;
@@ -232,6 +325,17 @@ body {
   .subject-radio-label.selected {
     border-color: #28a745;
     background: #e8f5e9;
+  }
+
+  /* Dark mode subject radio label hover và selected */
+  .dark .subject-radio-label:hover {
+    border-color: #28a745;
+    background: rgba(40, 167, 69, 0.15);
+  }
+
+  .dark .subject-radio-label.selected {
+    border-color: #28a745;
+    background: rgba(40, 167, 69, 0.2);
   }
 
   .subject-radio-label input[type="radio"] {
@@ -247,6 +351,12 @@ body {
     font-weight: 500;
     color: #333;
     flex: 1;
+    transition: color 0.3s ease;
+  }
+
+  /* Dark mode subject radio text */
+  .dark .subject-radio-text {
+    color: var(--text-primary);
   }
 
   .subject-radio-label.selected .subject-radio-text {
@@ -264,7 +374,20 @@ body {
     font-size: 14px;
     font-family: inherit;
     resize: vertical;
-    transition: border-color 0.25s;
+    transition: border-color 0.25s, background-color 0.3s ease, color 0.3s ease;
+    background-color: white;
+    color: #333;
+  }
+
+  /* Dark mode textarea */
+  .dark .notes-textarea {
+    background-color: var(--input-bg);
+    border-color: var(--calendar-tutor-border);
+    color: var(--calendar-tutor-text);
+  }
+
+  .dark .notes-textarea::placeholder {
+    color: var(--text-tertiary);
   }
 
   .notes-textarea:focus {
@@ -280,6 +403,14 @@ body {
     box-shadow: 0 6px 18px rgba(0, 0, 0, 0.13);
     text-align: center;
     color: #666;
+    transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  /* Dark mode empty message */
+  .dark .empty-edit-message {
+    background: var(--calendar-tutor-card);
+    color: var(--calendar-tutor-text-secondary);
+    box-shadow: 0 6px 18px var(--calendar-tutor-shadow);
   }
 
   /* Sidebar */
@@ -292,6 +423,13 @@ body {
     overflow-y: auto;
     position: sticky;
     top: 120px;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  /* Dark mode sidebar */
+  .dark .schedules-sidebar {
+    background: var(--calendar-tutor-card);
+    box-shadow: 0 6px 18px var(--calendar-tutor-shadow);
   }
 
   .sidebar-title {
@@ -301,6 +439,13 @@ body {
     margin: 0 0 20px 0;
     padding-bottom: 15px;
     border-bottom: 2px solid #007bff;
+    transition: color 0.3s ease, border-color 0.3s ease;
+  }
+
+  /* Dark mode sidebar title */
+  .dark .sidebar-title {
+    color: var(--text-primary);
+    border-bottom-color: var(--accent);
   }
 
   .sidebar-empty {
@@ -308,6 +453,12 @@ body {
     color: #999;
     padding: 20px;
     font-style: italic;
+    transition: color 0.3s ease;
+  }
+
+  /* Dark mode sidebar empty */
+  .dark .sidebar-empty {
+    color: var(--text-secondary);
   }
 
   .schedules-list {
@@ -324,6 +475,22 @@ body {
     cursor: pointer;
     transition: all 0.25s;
     position: relative;
+  }
+
+  /* Dark mode schedule item */
+  .dark .schedule-item {
+    background: var(--bg-secondary);
+    border-color: var(--calendar-tutor-border);
+  }
+
+  .dark .schedule-item:hover {
+    border-color: var(--accent);
+    background: var(--bg-tertiary);
+  }
+
+  .dark .schedule-item.active {
+    border-color: var(--accent);
+    background: rgba(59, 130, 246, 0.15);
   }
 
   .schedule-item:hover {
@@ -350,6 +517,12 @@ body {
     font-size: 16px;
     font-weight: 600;
     color: #333;
+    transition: color 0.3s ease;
+  }
+
+  /* Dark mode schedule item header */
+  .dark .schedule-item-header h4 {
+    color: var(--text-primary);
   }
 
   .editing-badge {
@@ -372,11 +545,23 @@ body {
     font-size: 13px;
     color: #555;
     line-height: 1.4;
+    transition: color 0.3s ease;
+  }
+
+  /* Dark mode schedule item content */
+  .dark .schedule-item-content p {
+    color: var(--text-secondary);
   }
 
   .schedule-item-content strong {
     color: #333;
     font-weight: 600;
+    transition: color 0.3s ease;
+  }
+
+  /* Dark mode schedule item strong */
+  .dark .schedule-item-content strong {
+    color: var(--text-primary);
   }
 
   .schedule-item-subject {
@@ -387,9 +572,44 @@ body {
     color: #007bff !important;
   }
 
+  /* Dark mode - các màu accent vẫn giữ nguyên vì đã có contrast tốt */
+
+  /* Override inline styles cho dark mode */
+  .dark .schedule-content p[style*="color: #666"],
+  .dark .schedule-content p[style*="color:#666"] {
+    color: var(--calendar-tutor-text-secondary) !important;
+  }
+
+  .dark .schedule-content span[style*="color: #666"],
+  .dark .schedule-content span[style*="color:#666"] {
+    color: var(--calendar-tutor-text-secondary) !important;
+  }
+
+  .dark .subjects-section p[style*="color: orange"],
+  .dark .subjects-section p[style*="color:orange"] {
+    color: #ffa500 !important;
+  }
+
+  /* Error message styling */
+  .tutorcalendar-container p[style*="color: red"],
+  .tutorcalendar-container p[style*="color:red"] {
+    transition: color 0.3s ease;
+  }
+
+  .dark .tutorcalendar-container p[style*="color: red"],
+  .dark .tutorcalendar-container p[style*="color:red"] {
+    color: #ff6b6b !important;
+  }
+
   .schedule-item-notes {
     color: #666 !important;
     font-style: italic;
+    transition: color 0.3s ease;
+  }
+
+  /* Dark mode schedule item notes */
+  .dark .schedule-item-notes {
+    color: var(--calendar-tutor-text-secondary) !important;
   }
 
   .schedule-item-delete {
@@ -408,5 +628,49 @@ body {
   .schedule-item-delete:hover {
     opacity: 1;
     transform: scale(1.1);
+  }
+
+  /* Helper classes cho các inline styles - hỗ trợ dark mode */
+  .muted-text {
+    color: #666;
+    transition: color 0.3s ease;
+  }
+
+  .dark .muted-text {
+    color: var(--calendar-tutor-text-secondary);
+  }
+
+  .warning-text {
+    color: orange;
+    transition: color 0.3s ease;
+  }
+
+  .dark .warning-text {
+    color: #ffa500;
+  }
+
+  .error-text {
+    color: red;
+    transition: color 0.3s ease;
+  }
+
+  .dark .error-text {
+    color: #ff6b6b;
+  }
+
+  /* Styling cho các phần text trong schedule content */
+  .schedule-content p,
+  .schedule-content span {
+    transition: color 0.3s ease;
+  }
+
+  .dark .schedule-content p[style*="color: #666"],
+  .dark .schedule-content span[style*="color: #666"] {
+    color: var(--calendar-tutor-text-secondary) !important;
+  }
+
+  .dark .schedule-content p[style*="color: orange"],
+  .dark .schedule-content p[style*="color: \"orange\""] {
+    color: #ffa500 !important;
   }
   

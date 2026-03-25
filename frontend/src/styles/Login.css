@@ -15,6 +15,12 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh; /* Chiều cao toàn màn hình */
+  transition: background-color 0.3s ease;
+}
+
+/* Dark mode body */
+.dark body {
+  background-color: #1a1a1a;
 }
 
 /* Khung chính */
@@ -25,6 +31,12 @@ body {
   max-width: 1440px; /* Chiều rộng tối đa */
   min-height: 100vh; /* Đánh dấu toàn khung khớp chiều cao màn hình */
   background-color: #ffffff;
+  transition: background-color 0.3s ease;
+}
+
+/* Dark mode frame */
+.dark .frame1 {
+  background-color: #2d2d2d;
 }
 
 /* Cột trái */
@@ -59,6 +71,12 @@ body {
   font-weight: bold; /* Chữ đậm */
   color: #232323; /* Màu chữ tối */
   text-align: center;
+  transition: color 0.3s ease;
+}
+
+/* Dark mode title */
+.dark .text-wrapper {
+  color: #e5e5e5;
 }
 
 /* Form Đăng nhập */
@@ -79,7 +97,20 @@ body {
   font-size: 16px; /* Kích thước phù hợp */
   font-family: inherit; /* Kế thừa font từ body */
   outline: none; /* Không hiển thị hiệu ứng outline mặc định */
-  transition: border-color 0.3s ease-in-out; /* Hiệu ứng khi focus */
+  transition: border-color 0.3s ease-in-out, background-color 0.3s ease, color 0.3s ease; /* Hiệu ứng khi focus */
+  background-color: #ffffff;
+  color: #232323;
+}
+
+/* Dark mode input */
+.dark .inputField {
+  background-color: #3a3a3a;
+  border-color: #404040;
+  color: #e5e5e5;
+}
+
+.dark .inputField::placeholder {
+  color: #888;
 }
 
 .inputField:focus {
@@ -111,6 +142,12 @@ body {
   color: #6c6c6c; /* Màu chữ xám nhạt */
   text-align: center;
   text-decoration: none; /* Bỏ gạch chân */
+  transition: color 0.3s ease;
+}
+
+/* Dark mode back link */
+.dark .back-link {
+  color: #b0b0b0;
 }
 
 .back-link:hover {
@@ -125,6 +162,12 @@ body {
   align-items: center; /* Căn giữa nội dung theo chiều dọc */
   background-color: #f4f4f4;
   overflow: hidden; /* Nếu có phần dư, ẩn đi */
+  transition: background-color 0.3s ease;
+}
+
+/* Dark mode right column */
+.dark .right-column {
+  background-color: #3a3a3a;
 }
 
 /* Ảnh nền cột phải */

@@ -6,6 +6,16 @@
     --border: #e6eefb;
     --shadow: rgba(16,24,40,0.06);
   }
+
+  /* Dark mode variables */
+  .dark {
+    --card-bg: #2d2d2d;
+    --page-bg: #1a1a1a;
+    --muted: #b0b0b0;
+    --accent: #3b82f6;
+    --border: #404040;
+    --shadow: rgba(0, 0, 0, 0.3);
+  }
   
   .studentlist-page{
     margin-top: 100px;
@@ -14,6 +24,7 @@
     padding: 36px 20px 80px;
     box-sizing: border-box;
     font-family: "Poppins", sans-serif;
+    transition: background-color 0.3s ease;
   }
   
   .studentlist-container{
@@ -30,6 +41,12 @@
     font-size: 24px;
     color: #0f172a;
     margin-bottom: 6px;
+    transition: color 0.3s ease;
+  }
+
+  /* Dark mode title */
+  .dark .studentlist-title {
+    color: var(--text-primary);
   }
   
   .studentlist-subtitle{
@@ -69,6 +86,12 @@
     font-size:18px;
     color:#0f172a;
     font-weight:600;
+    transition: color 0.3s ease;
+  }
+
+  /* Dark mode empty text */
+  .dark .empty-text {
+    color: var(--text-primary);
   }
   
   .empty-note{
@@ -89,29 +112,106 @@
     padding:12px 16px;
     border-bottom:1px solid #f1f5f9;
     color:#0f172a;
+    transition: color 0.3s ease, border-color 0.3s ease;
+  }
+
+  /* Dark mode table cells */
+  .dark .students-table th,
+  .dark .students-table td {
+    color: var(--text-primary);
+    border-bottom-color: var(--border);
   }
   
   .students-table thead th{
     background: linear-gradient(90deg, rgba(245,247,250,1), rgba(255,255,255,1));
     font-weight:700;
+    transition: background 0.3s ease;
+  }
+
+  /* Dark mode table header */
+  .dark .students-table thead th {
+    background: linear-gradient(90deg, rgba(58,58,58,1), rgba(45,45,45,1));
+    color: var(--text-primary);
   }
 
   .session-header h3{
     font-size: 18px;
     color: #0f172a;
     font-weight: 600;
+    transition: color 0.3s ease;
   }
+
+  /* Dark mode session header */
+  .dark .session-header h3 {
+    color: var(--text-primary);
+  }
+
   .session-subject{
     font-size: 16px;
     color: #0f172a;
     font-weight: 600;
     margin-top: 6px;
+    transition: color 0.3s ease;
   }
+
+  /* Dark mode session subject */
+  .dark .session-subject {
+    color: var(--text-primary);
+  }
+
   .session-student-count{
     font-size: 16px;
     color: #0f172a;
     font-weight: 600;
     margin-top: 6px;
+    transition: color 0.3s ease;
+  }
+
+  /* Dark mode student count */
+  .dark .session-student-count {
+    color: var(--text-primary);
+  }
+
+  /* Session card */
+  .session-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 16px;
+    box-shadow: 0 2px 8px var(--shadow);
+    transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .sessions-list {
+    margin-top: 20px;
+  }
+
+  /* Error container */
+  .error-container {
+    text-align: center;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 12px;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+  }
+
+  /* Dark mode error container */
+  .dark .error-container {
+    background: rgba(45, 45, 45, 0.95);
+    color: var(--text-primary);
+  }
+
+  .error-message {
+    color: #c62828;
+    font-size: 16px;
+    transition: color 0.3s ease;
+  }
+
+  /* Dark mode error message */
+  .dark .error-message {
+    color: #ff6b6b;
   }
   
   @media (max-width:800px){

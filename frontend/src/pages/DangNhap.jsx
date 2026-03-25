@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "../styles/Login.css";
 import { Link, useNavigate, useSearchParams } from "react-router-dom";
+import DarkModeToggle from "../components/DarkModeToggle";
 
 const API_BASE = import.meta.env.VITE_API_URL || "http://localhost:5001/api";
 
@@ -83,6 +84,11 @@ export default function DangNhap() {
 
   return (
     <div className="frame1">
+      {/* Dark mode toggle button - top right */}
+      <div style={{ position: 'fixed', top: '20px', right: '20px', zIndex: 1000 }}>
+        <DarkModeToggle />
+      </div>
+
       {/* Cột trái */}
       <div className="left-column">
         {/* Logo */}

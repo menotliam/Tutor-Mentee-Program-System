@@ -18,6 +18,13 @@
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Đổ bóng nhẹ */
   display: flex;
   justify-content: center;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Dark mode navbar */
+.dark .navbar {
+  background-color: rgba(26, 26, 26, 0.9);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
 }
 
 /* ---------------- Container ---------------- */

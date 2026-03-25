@@ -8,6 +8,12 @@
   top: 0;
   /* remove hard-coded min-width to avoid horizontal overflow */
   min-width: 0;
+  transition: background-color 0.3s ease;
+}
+
+/* Dark mode library */
+.dark .to-do {
+  background-color: var(--bg-primary);
 }
 
 .to-do .vector {
@@ -355,6 +361,12 @@
   margin-left: 116.8px;
   text-align: center;
   width: 1063.98px;
+  transition: color 0.3s ease;
+}
+
+/* Dark mode title */
+.dark .to-do .th-vi-n-online-HCMUT {
+  color: var(--text-primary);
 }
 
 .to-do .span {
@@ -497,6 +509,14 @@
   border: 1px solid #e2e8f0;
   padding: 16px;
   z-index: 100;
+  transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Dark mode popup */
+.dark .subject-popup {
+  background: var(--card-bg);
+  border-color: var(--border-color);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
 }
 
 .subject.open {
@@ -525,10 +545,23 @@
   align-items: center;
 }
 
+/* Dark mode subject */
+.dark .subject {
+  background: var(--card-bg);
+  border-color: var(--border-color);
+  color: var(--text-primary);
+}
+
 .subject:hover {
   background: #f8fafc;
   border-color: #94a3b8;
   transform: translateY(-1px);
+}
+
+/* Dark mode subject hover */
+.dark .subject:hover {
+  background: var(--bg-tertiary);
+  border-color: var(--text-secondary);
 }
 
 .search-row {
@@ -562,6 +595,15 @@
   font-size: 16px;
   color: #333;
   box-shadow: inset 0 1px 0 rgba(255,255,255,0.5);
+  background-color: #ffffff;
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+
+/* Dark mode search input */
+.dark .search-input-wrap .p {
+  background-color: var(--input-bg);
+  border-color: var(--border-color);
+  color: var(--text-primary);
 }
 
 .search-btn {

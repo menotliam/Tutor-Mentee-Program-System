@@ -1,4 +1,30 @@
-# Tutor-Mentee-Program-System
+<div align="center">
+
+# Tutor Support System at Ho Chi Minh City University of Technology – VNU-HCM
+
+_Empowering Growth Through Structured Mentorship Connections_
+
+![last commit](https://img.shields.io/badge/last_commit-today-1abc9c?style=for-the-badge)
+![language javascript](https://img.shields.io/badge/javascript-80.6%25-f1c40f?style=for-the-badge&logo=javascript&logoColor=black)
+![languages count](https://img.shields.io/badge/languages-3-9b59b6?style=for-the-badge)
+
+Built with the tools and technologies:
+
+![Express](https://img.shields.io/badge/Express-000000?style=for-the-badge&logo=express&logoColor=white)
+![JSON](https://img.shields.io/badge/JSON-333333?style=for-the-badge&logo=json&logoColor=white)
+![Markdown](https://img.shields.io/badge/Markdown-000000?style=for-the-badge&logo=markdown&logoColor=white)
+![npm](https://img.shields.io/badge/npm-CB3837?style=for-the-badge&logo=npm&logoColor=white)
+![Mongoose](https://img.shields.io/badge/Mongoose-800000?style=for-the-badge&logo=mongoose&logoColor=white)
+![.env](https://img.shields.io/badge/.ENV-4CAF50?style=for-the-badge)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+![Nodemon](https://img.shields.io/badge/Nodemon-76D04B?style=for-the-badge&logo=nodemon&logoColor=black)
+![React](https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=black)
+![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)
+![ESLint](https://img.shields.io/badge/ESLint-4B32C3?style=for-the-badge&logo=eslint&logoColor=white)
+![Swiper](https://img.shields.io/badge/Swiper-6332F6?style=for-the-badge&logo=swiper&logoColor=white)
+![Jest](https://img.shields.io/badge/Jest-C21325?style=for-the-badge&logo=jest&logoColor=white)
+
+</div>
 
 ![Build](https://img.shields.io/badge/CI-not_configured-lightgrey?style=flat-square)
 ![Coverage](https://img.shields.io/badge/coverage-not_measured-lightgrey?style=flat-square)
@@ -11,7 +37,7 @@ Tutor-Mentee-Program-System is a full-stack web platform that connects students 
 
 > Recommended: replace the placeholder image below with a real high-resolution screenshot from your running UI.
 
-![Tutor-Mentee Program Screenshot](https://placehold.co/1600x900/0f172a/ffffff?text=Tutor-Mentee+Program+System+UI+Preview)
+![Tutor-Mentee Program Screenshot](/frontend/public/UI%20_screenshot.jpg)
 
 ## Table of Contents
 

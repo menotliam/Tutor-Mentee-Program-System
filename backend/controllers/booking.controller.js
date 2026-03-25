@@ -1,3 +1,4 @@
+const mongoose = require('mongoose');
 const Booking = require('../models/booking.model');
 const Class = require('../models/class.model');
 const TutorSchedule = require('../models/tutorSchedule.model');
@@ -51,45 +52,10 @@ const bookTutorSchedule = async (req, res) => {
       });
     }
 
-    // Kiểm tra enrollment cho timeSlot này
-    let enrollment = schedule.enrollments.find(e => e.timeSlot === timeSlot);
-    
-    if (!enrollment) {
-      // Tạo enrollment mới nếu chưa có
-      enrollment = {
-        timeSlot,
-        students: [],
-        maxCapacity: 4
-      };
-      schedule.enrollments.push(enrollment);
-    }
-
-    // Kiểm tra đã đăng ký chưa
-    const alreadyEnrolled = enrollment.students.some(
-      studentId => studentId && userId && studentId.toString() === userId.toString()
-    );
-    if (alreadyEnrolled) {
-      return res.status(400).json({
-        success: false,
-        message: 'Bạn đã đăng ký khung giờ này rồi'
-      });
-    }
-
-    // Kiểm tra còn chỗ không
-    if (enrollment.students.length >= enrollment.maxCapacity) {
-      return res.status(400).json({
-        success: false,
-        message: 'Khung giờ này đã đầy'
-      });
-    }
-
     // Validation: Kiểm tra thời gian booking
-    // Parse date và timeSlot để tính giờ bắt đầu
-    // Parse date string "YYYY-MM-DD" correctly (treat as local date, not UTC)
     const [year, month, day] = schedule.date.split('-').map(Number);
     const [startHour] = timeSlot.split('-').map(Number);
     
-    // Tạo Date object cho giờ bắt đầu buổi học
     const sessionStartTime = new Date(year, month - 1, day, startHour, 0, 0);
     
     const now = new Date();
@@ -111,9 +77,143 @@ const bookTutorSchedule = async (req, res) => {
       });
     }
 
-    // Thêm student vào enrollment
-    enrollment.students.push(userId);
-    await schedule.save();
+    const enrollment = schedule.enrollments.find(e => e.timeSlot === timeSlot);
+    const maxCapacity = enrollment ? enrollment.maxCapacity : 40;
+    const userIdObjectId = new mongoose.Types.ObjectId(userId);
+
+    // Atomic operation: Thêm student vào enrollment với điều kiện capacity và không duplicate
+    const updateResult = await TutorSchedule.findOneAndUpdate(
+      {
+        _id: scheduleId,
+        $or: [
+          // Case 1: Enrollment đã tồn tại - kiểm tra capacity chưa đầy và user chưa đăng ký
+          {
+            $expr: {
+              $and: [
+                {
+                  $gt: [
+                    {
+                      $size: {
+                        $filter: {
+                          input: '$enrollments',
+                          cond: {
+                            $and: [
+                              { $eq: ['$$this.timeSlot', timeSlot] },
+                              { $lt: [{ $size: '$$this.students' }, maxCapacity] },
+                              { $not: { $in: [userIdObjectId, '$$this.students'] } }
+                            ]
+                          }
+                        }
+                      }
+                    },
+                    0
+                  ]
+                }
+              ]
+            }
+          },
+          // Case 2: Enrollment chưa tồn tại - sẽ tạo mới
+          {
+            'enrollments.timeSlot': { $ne: timeSlot }
+          }
+        ]
+      },
+      [
+        {
+          $set: {
+            enrollments: {
+              $cond: {
+                if: {
+                  $gt: [
+                    {
+                      $size: {
+                        $filter: {
+                          input: '$enrollments',
+                          cond: { $eq: ['$$this.timeSlot', timeSlot] }
+                        }
+                      }
+                    },
+                    0
+                  ]
+                },
+                then: {
+                  // Enrollment đã tồn tại: thêm userId vào students array
+                  $map: {
+                    input: '$enrollments',
+                    as: 'enrollment',
+                    in: {
+                      $cond: {
+                        if: { $eq: ['$$enrollment.timeSlot', timeSlot] },
+                        then: {
+                          $mergeObjects: [
+                            '$$enrollment',
+                            {
+                              students: {
+                                $cond: {
+                                  if: { $in: [userIdObjectId, '$$enrollment.students'] },
+                                  then: '$$enrollment.students',
+                                  else: { $concatArrays: ['$$enrollment.students', [userIdObjectId]] }
+                                }
+                              }
+                            }
+                          ]
+                        },
+                        else: '$$enrollment'
+                      }
+                    }
+                  }
+                },
+                else: {
+                  // Enrollment chưa tồn tại: thêm enrollment mới
+                  $concatArrays: [
+                    '$enrollments',
+                    [{
+                      timeSlot: timeSlot,
+                      students: [userIdObjectId],
+                      maxCapacity: maxCapacity
+                    }]
+                  ]
+                }
+              }
+            }
+          }
+        }
+      ],
+      {
+        new: true,
+        runValidators: true
+      }
+    );
+
+    if (!updateResult) {
+      const updatedSchedule = await TutorSchedule.findById(scheduleId);
+      const checkEnrollment = updatedSchedule.enrollments.find(e => e.timeSlot === timeSlot);
+      
+      if (checkEnrollment) {
+        const alreadyEnrolled = checkEnrollment.students.some(
+          studentId => studentId && userId && studentId.toString() === userId.toString()
+        );
+        
+        if (alreadyEnrolled) {
+          return res.status(400).json({
+            success: false,
+            message: 'Bạn đã đăng ký khung giờ này rồi'
+          });
+        }
+        
+        if (checkEnrollment.students.length >= checkEnrollment.maxCapacity) {
+          return res.status(400).json({
+            success: false,
+            message: 'Khung giờ này đã đầy'
+          });
+        }
+      }
+      
+      return res.status(400).json({
+        success: false,
+        message: 'Không thể đặt lịch. Vui lòng thử lại.'
+      });
+    }
 
     // Tạo booking record với status ACTIVE (sẽ chuyển sang COMPLETED khi qua giờ)
     const booking = await Booking.create({
@@ -126,7 +226,7 @@ const bookTutorSchedule = async (req, res) => {
         subjectCode: validSubject.subjectCode,
         subjectName: validSubject.subjectName
       },
-      status: 'ACTIVE' // Bắt đầu với ACTIVE, sẽ chuyển sang COMPLETED khi qua giờ
+      status: 'ACTIVE' 
     });
 
     res.status(201).json({
@@ -148,7 +248,6 @@ const bookSchedule = async (req, res) => {
     const { classId } = req.body;
     const userId = req.user.userId;
     
-    // Sử dụng service thay vì direct Model
     const result = await BookingService.bookSchedule(userId, classId);
     
     res.status(201).json(result);

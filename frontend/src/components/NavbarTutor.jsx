@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import DarkModeToggle from "./DarkModeToggle";
 import "../styles/Navbar.css";
 
 export default function NavbarTutor() {
@@ -30,7 +31,7 @@ export default function NavbarTutor() {
           ))}
         </div>
 
-        {/* Mail Icon và Đăng xuất */}
+        {/* Mail Icon, Dark Mode Toggle và Đăng xuất */}
         <div className="navbar__actions">
           <button className="mail-icon-button">
             <svg
@@ -50,6 +51,8 @@ export default function NavbarTutor() {
               <span className="notification-badge">{unreadNotifications}</span>
             )}
           </button>
+
+          <DarkModeToggle />
 
           <div className="dangnhap">
             <Link to="/" className="dangnhap-link">

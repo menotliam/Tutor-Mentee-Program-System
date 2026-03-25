@@ -1,10 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import DarkModeToggle from "../components/DarkModeToggle";
 import "../styles/TrangChu.css";
 
 export default function TrangChu() {
   return (
     <div className="desktop">
+      {/* Dark mode toggle button - top right */}
+      <div style={{ position: 'fixed', top: '20px', right: '20px', zIndex: 1000 }}>
+        <DarkModeToggle />
+      </div>
+
       <div className="frame-card" role="region" aria-label="Form đăng nhập">
         {/* Logo lớn ở trên cùng */}
         <img className="card-logo" src="/logoBK.png" alt="BK Logo" />
