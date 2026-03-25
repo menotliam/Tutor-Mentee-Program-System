@@ -35,8 +35,6 @@ Tutor-Mentee-Program-System is a full-stack web platform that connects students 
 
 ## Visuals / Demo
 
-> Recommended: replace the placeholder image below with a real high-resolution screenshot from your running UI.
-
 ![Tutor-Mentee Program Screenshot](/frontend/public/UI%20_screenshot.jpg)
 
 ## Table of Contents
