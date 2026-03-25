@@ -1,0 +1,120 @@
+TC-ID,Module,Title,Priority,Preconditions,Test Steps,Test Data,Expected Result,Status,Tester,Test Date,Actual Result,Defect ID,Notes
+TC-AUTH-001,Authentication,Successful login with valid credentials,HIGH,User account exists and is active,"1. Navigate to Login page
+2. Enter valid email
+3. Enter valid password
+4. Click Login button","Email: student@test.com, Password: 123456","Login successful, Redirect to home page, Access token received",Pass,Giang,29/11/2025,Expected,-,-
+TC-AUTH-002,Authentication,Login fails with invalid email,HIGH,None,"1. Navigate to Login page
+2. Enter non-existent email
+3. Enter any password
+4. Click Login button","Email: nonexistent@test.com, Password: AnyPass123!","Error message: Email hoac password khong dung, hay nhap lai",Pass,Giang,29/11/2025,Expected,-,-
+TC-AUTH-003,Authentication,Login fails with invalid password,HIGH,User account exists,"1. Navigate to Login page
+2. Enter valid email
+3. Enter wrong password
+4. Click Login button","Email: student@test.com, Password: WrongPass!",Error message: Email hoac password khong dung; Login attempts incremented,Pass,Giang,29/11/2025,Expected,-,-
+TC-AUTH-004,Authentication,Login fails with empty email field,MEDIUM,None,"1. Navigate to Login page
+2. Leave email field empty
+3. Enter password
+4. Click Login button","Email: (empty), Password: AnyPass123!",Error message: Email va password la bat buoc,Pass,Giang,29/11/2025,Expected,-,-
+TC-AUTH-005,Authentication,Login fails with empty password field,MEDIUM,None,"1. Navigate to Login page
+2. Enter valid email
+3. Leave password field empty
+4. Click Login button","Email: valid@test.com, Password: (empty)",Error message: Email va password la bat buoc,Pass,Giang,29/11/2025,Expected,-,-
+TC-AUTH-006,Authentication,Account locked after multiple failed login attempts,HIGH,"User account exists, not locked","1. Navigate to Login page
+2. Enter valid email
+3. Enter wrong password
+4. Repeat until max attempts reached","Email: valid@test.com, Password: WrongPass! (multiple times)","Account locked after max attempts, Error message with lock duration",Pass,Giang,29/11/2025,Expected,-,-
+TC-AUTH-007,Authentication,Login fails for being locked account,HIGH,User account exists but being locked,"1. Navigate to Login page
+2. Enter email of locked account
+3. Enter correct password
+4. Click Login button","Email: locked@test.com, Password: CorrectPass123!","Error message: Tai khoan da bi khoa do dang nhap sai nhieu lan, vui long thu lai sau�",Pass,Giang,29/11/2025,Expected,-,-
+TC-AUTH-008,Authentication,Login with invalid email format,MEDIUM,None,"1. Navigate to Login page
+2. Enter invalid email format
+3. Enter password
+4. Click Login button","Email: invalid-email, Password: AnyPass123!",Validation error for email format,Pass,Giang,29/11/2025,Expected,-,-
+TC-AUTH-009,Authentication,Successful logout,HIGH,User is logged in,"1. Click Logout button
+2. Confirm logout if prompted",N/A,"Logout successful, Redirect to login page, Token cleared",Pass,Giang,29/11/2025,Expected,-,-
+TC-AUTH-011,Authentication,Session persistence after browser refresh,MEDIUM,User is logged in,"1. Login successfully
+2. Refresh browser page
+3. Check session status",N/A,"User remains logged in, No redirect to login page",Pass,Giang,29/11/2025,Expected,-,-
+TC-AUTH-019,Authentication,Access token refresh,HIGH,User has valid refresh token,"1. Wait for access token to expire
+2. System auto-refreshes token
+3. Verify new access token works",Valid refresh token,"New access token issued, User session continues",Pass,Giang,29/11/2025,Expected,-,-
+TC-AUTH-020,Authentication,Access protected route without token,HIGH,User is not logged in,"1. Try to access protected API endpoint
+2. Without authentication header",N/A,"HTTP 401 Unauthorized, Redirect to login page",#VALUE!,-,-,-,-,-
+TC-BOOK-001,Booking,Successfully book a class,HIGH,"Student logged in, Class available","1. Navigate to available classes
+2. Select a tutor
+3. View available classes
+4. Select a class
+5. Click Book button",scheduleID: (valid schedule ID),"Booking created with status COMPLETED, Success message displayed",Pass,Giang,29/11/2025,Expected,-,-
+TC-BOOK-002,Booking,Book class that is already full,HIGH,"Student logged in, Class reached maxCapacity","1. Navigate to available classes
+2. Try to book a full class",classId: (full class ID),Error message: Lớp đã đầy,-,-,-,-,-,-
+TC-BOOK-003,Booking,Book class that has already started,HIGH,"Student logged in, Class startTime in past",1. Try to book a class that has already started,classId: (past class ID),Error message: Quá hạn đăng ký,-,-,-,-,-,-
+TC-BOOK-004,Booking,Book class that has been cancelled,HIGH,"Student logged in, Class.isCancelled = true",1. Try to book a cancelled class,classId: (cancelled class ID),Error message: Lớp học đã bị hủy,-,-,-,-,-,-
+TC-BOOK-005,Booking,Book same class twice,HIGH,"Student logged in, Already booked the class","1. Book a class successfully
+2. Try to book the same class again",scheduleID: (already booked schedule ID),Error message: Ban da dang ky lop hoc nay roi,Pass,Giang,29/11/2025,Expected,-,-
+TC-BOOK-006,Booking,Book class with non-existent class ID,MEDIUM,Student logged in,1. Send booking request with invalid classId,classId: invalidClassId123,Error message: Lớp học không tồn tại,-,-,-,-,-,-
+TC-BOOK-007,Booking,Book multiple different classes,HIGH,"Student logged in, Multiple classes available","1. Book class A with tutor X
+2. Book class B with tutor Y
+3. Book class C with tutor Z",Multiple valid class IDs,All bookings created successfully,Pass,Giang,29/11/2025,Expected,-,-
+TC-BOOK-008,Booking,Cancel booking more than 3 hours before class,HIGH,"Student logged in, Booking ACTIVE, Class starts >3 hours","1. Navigate to bookings list
+2. Select a booking
+3. Click Cancel button","bookingId: (valid, >3 hours to class)","Booking status changed to CANCELLED, Student removed from class",Pass,Giang,29/11/2025,Expected,-,-
+TC-BOOK-009,Booking,Cancel booking less than 3 hours before class,HIGH,"Student logged in, Booking ACTIVE, Class starts <3 hours","1. Navigate to bookings list
+2. Select booking starting in <3 hours
+3. Click Cancel button",bookingId: (<3 hours to class),Error message: Quá trễ để hủy lịch. Phải hủy trước ít nhất 3 giờ,-,-,-,-,-,-
+TC-BOOK-010,Booking,Cancel booking that is already cancelled,MEDIUM,"Student logged in, Booking status CANCELLED",1. Try to cancel an already cancelled booking,bookingId: (cancelled booking ID),Error message indicating booking not found or already cancelled,-,-,-,-,-,-
+TC-BOOK-011,Booking,Cancel another user's booking,HIGH,"Student A logged in, Booking belongs to Student B",1. Try to cancel a booking that belongs to another user,bookingId: (another user's booking ID),"Error message: Bạn không có quyền hủy lịch này, HTTP 403",-,-,-,-,-,-
+TC-BOOK-012,Booking,Cancel booking without bookingId,MEDIUM,Student logged in,1. Send cancel request without bookingId,bookingId: (empty/null),"Error message: Vui lòng cung cấp bookingId, HTTP 400",-,-,-,-,-,-
+TC-BOOK-013,Booking,Change booking to different class successfully,HIGH,"Student logged in, Old booking ACTIVE, New class available, Old class >3 hours","1. Navigate to bookings
+2. Select booking to change
+3. Select new class
+4. Confirm change","oldBookingId: (valid), newScheduleID: (valid)","Old booking CANCELLED, New booking ACTIVE, Success message",#VALUE!,-,-,-,-,-
+TC-BOOK-014,Booking,Change booking to full class,HIGH,"Student logged in, New class is full",1. Try to change booking to a full class,"oldBookingId: (valid), newClassId: (full class)",Error message: Lớp mới đã đầy,-,-,-,-,-,-
+TC-BOOK-015,Booking,Change booking to cancelled class,MEDIUM,"Student logged in, New class is cancelled",1. Try to change booking to a cancelled class,"oldBookingId: (valid), newClassId: (cancelled)",Error message: Lớp mới đã bị hủy,-,-,-,-,-,-
+TC-BOOK-016,Booking,Change booking less than 3 hours before old class,HIGH,"Student logged in, Old class starts <3 hours",1. Try to change a booking starting in <3 hours,"oldBookingId: (<3 hours), newClassId: (valid)",Error message: Quá trễ để đổi lịch lớp cũ,-,-,-,-,-,-
+TC-BOOK-017,Booking,Change booking to class already enrolled,MEDIUM,"Student logged in, Already enrolled in new class",1. Try to change to a class already enrolled,"oldBookingId: (valid), newClassId: (already enrolled)",Error message: Bạn đã đăng ký lớp mới rồi,-,-,-,-,-,-
+TC-BOOK-018,Booking,View all bookings for logged-in user,HIGH,"Student logged in, Has bookings","1. Navigate to bookings page
+2. View booking list",N/A,"All user's bookings displayed, Sorted by createdAt",Pass,Giang,29/11/2025,Expected,-,-
+TC-BOOK-019,Booking,View bookings when user has no bookings,LOW,"Student logged in, No bookings",1. Navigate to bookings page,N/A,"Empty state displayed, Message indicating no bookings",Pass,Giang,29/11/2025,Expected,-,-
+TC-BOOK-020,Booking,View available classes,HIGH,"Student logged in, Classes exist",1. Navigate to available classes page,N/A,Only future non-cancelled classes with available slots shown,Pass,Giang,29/11/2025,Expected,-,-
+TC-BOOK-021,Booking,Filter available classes by subject,MEDIUM,"Student logged in, Multiple subjects have classes","1. Navigate to available classes
+2. Select a subject filter",Subject: Mathematics,Only classes for selected subject shown,#VALUE!,-,-,-,-,-
+TC-PROF-001,Profile,View student profile,MEDIUM,Student logged in,1. Navigate to profile page,N/A,"Profile displayed with all student fields: username, email, fullName, phoneNumber, studentId, GPA, major, academicYear, conductScore",Pass,Giang,28/11/2025,Expected,,
+TC-PROF-002,Profile,View tutor profile,MEDIUM,Tutor logged in,1. Navigate to profile page,N/A,Tutor profile displayed with relevant fields,Fail,Giang,28/11/2025,Unnecessary fields contained,#70,-
+TC-PROF-003,Profile,Update student profile - valid data,MEDIUM,Student logged in,"1. Navigate to profile page
+2. Edit fullName to: ""New Name""
+3. Click Save button",fullName: New Name,"Profile updated successfully
+Success notification appears
+New data is updated in Database  ",Pass,Giang,28/11/2025,Expected,-,-
+TC-PROF-004,Profile,Update profile with invalid phone number,LOW,Student logged in,"1. Navigate to profile page
+2. Enter invalid phone number
+3. Click Save button",phoneNumber: abc123,Validation error,Fail,Giang,28/11/2025,Server Error,#55,-
+TC-PROF-005,Profile,Non-student tries to use student profile update API,MEDIUM,Tutor logged in,"1. CALL POST /api/auth/login @instructor_test 
+2. CALL PUT /api/auth/profile/student with token from response above and fullName ""Test Name"" ",fullName: Test Name,"Error message: API n�y ch? d�nh cho student, HTTP 403",Pass,Giang,28/11/2025,Expected,-,-
+TC-ADMIN-001,Admin,Admin accesses admin panel,HIGH,Admin logged in,1. Navigate to admin panel,N/A,"Admin panel accessible, Admin features displayed",-,-,-,-,-,-
+TC-ADMIN-002,Admin,Non-admin tries to access admin panel,HIGH,Student or Tutor logged in,1. Try to navigate to admin routes,N/A,"Access denied, HTTP 403 Forbidden",-,-,-,-,-,-
+TC-ADMIN-003,Admin,Admin creates new user,HIGH,Admin logged in,"1. Navigate to user management
+2. Click Create User
+3. Fill user details
+4. Select role
+5. Submit","username, email, password, role","User created successfully, User can login",-,-,-,-,-,-
+TC-ADMIN-004,Admin,Admin deactivates user account,HIGH,"Admin logged in, Target user exists","1. Navigate to user management
+2. Select user
+3. Click Deactivate",userId: (target user),"User.isActive = false, User cannot login",-,-,-,-,-,-
+TC-UI-001,UI/UX,Login page displays correctly,MEDIUM,None,"1. Navigate to login page
+2. Verify all elements present",N/A,All elements visible and properly styled,Pass,Giang,29/11/2025,Expected,-,-
+TC-UI-002,UI/UX,Password field masks input,LOW,None,"1. Navigate to login page
+2. Enter password
+3. Observe input masking",Password: TestPass123,Password characters masked,Pass,Giang,29/11/2025,Expected,-,-
+TC-UI-003,UI/UX,Calendar displays booked classes correctly,HIGH,"Student logged in, Has booked classes","1. Navigate to Calendar page
+2. View booked sessions",N/A,Booked sessions displayed on correct dates,Pass,Giang,29/11/2025,Expected,-,-
+TC-UI-004,UI/UX,Error messages display clearly,MEDIUM,None,"1. Trigger various error conditions
+2. Observe error message display",Various error scenarios,Error messages visible and readable,Pass,Giang,29/11/2025,Expected,-,-
+TC-UI-005,UI/UX,Loading states displayed during API calls,MEDIUM,None,"1. Perform action requiring API call
+2. Observe loading state",N/A,Loading indicator displayed and removed after completion,Pass,Giang,29/11/2025,Expected,-,-
+TC-PERF-001,Performance,Login response time under normal load,HIGH,N/A,"1. Simulate 100 concurrent login requests
+2. Measure response times",100 concurrent users,"Average response time <500ms, 95th percentile <1 second",-,-,-,-,-,-
+TC-PERF-002,Performance,Booking service response time under peak load,HIGH,N/A,"1. Simulate 300 concurrent booking requests
+2. Measure response times",300 concurrent users,"Average response time <1 second, Error rate <1%",-,-,-,-,-,-
+TC-PERF-003,Performance,Database connection pool under load,MEDIUM,N/A,"1. Simulate sustained load for 10 minutes
+2. Monitor DB connections",Sustained load,No connection pool exhaustion,-,-,-,-,-,-
